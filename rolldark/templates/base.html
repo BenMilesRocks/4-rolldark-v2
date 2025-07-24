@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        {% block meta %}
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% endblock %}
+
+        {% block extra_meta %}
+        {% endblock %}
+
+        <title>Rolldark Game Master Agency {% block extra_title %}{% endblock %}</title>
+
+        {% block core_css %}
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+            <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        {% endblock %}
+
+        {% block extra_css %}
+        {% endblock %}
+
+        {% block core_js %}
+            <!-- Bootstrap 5.3.6 -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+            <!-- Font Awesome -->
+            <script src="https://kit.fontawesome.com/1835afa7d6.js" crossorigin="anonymous"></script>
+            <!-- jQuery -->
+             <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+            <!-- Stripe JS CDN -->
+            <script src="https://js.stripe.com/basil/stripe.js"></script>
+        {% endblock %}
+
+        {% block extra_js %}
+        {% endblock %}
+
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-expand-lg bg-dark border-bottom border-body" data-bs-theme="dark">
+
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'home' %}"><img src="/media/rolldark_basic_logo.png" id="navbar-logo"></a>
+                <!-- Navbar toggler for smaller screens -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Page links -->
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav nav-underline mb-2 mb-lg-0 me-2">
+
+                        <li class="nav-item">
+                            <a {% if request.resolver_match.url_name == 'home' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'home' %}">Home</a>
+                        </li>
+
+                        <!-- Make these into dropdown links for each section. CLEAN UP CURRENT SITE STRUCTURE! -->
+                        <li class="nav-item">
+                            <a {% if request.resolver_match.url_name == 'products' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'products' %}">Games</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a {% if request.resolver_match.url_name == 'dice' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'dice' %}">Dice</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="{% if grand_total %}text-light font-weight-bold{% else %}text-light{% endif %} nav-link" href="{% url 'view_cart' %}">
+                                <div class="text-center">
+                                    <i class="fa-solid fa-cart-shopping"></i>
+                                    <span class="my-2">
+                                        {% if grand_total %}
+                                            £{{ grand_total|floatformat:2 }}
+                                        {% else %}
+                                            £0.00
+                                        {% endif %}
+                                    </span>
+                                    </div>
+                            </a>
+                        </li>
+
+                    </ul>
+            </div>
+    
+        </nav>
+
+        {% block extra_header %}
+        <!-- extra header element for product search filters, etc -->
+        {% endblock %}
+
+        {% if messages %}
+            <div class="message-container"></div>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+
+        {% block post_load_js %}
+        {% endblock %}
+        
+    </body>
+
+</html>
