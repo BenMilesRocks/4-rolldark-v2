@@ -58,7 +58,9 @@
                             <a {% if request.resolver_match.url_name == 'home' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'home' %}">Home</a>
                         </li>
 
-                        
+                        <li class="nav-item">
+                            <a {% if request.resolver_match.url_name == 'products' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'products' %}">All Products</a>
+                        </li>                        
 
                     </ul>
             </div>
