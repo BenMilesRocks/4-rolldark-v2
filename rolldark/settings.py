@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # Site apps
     'home',
     'products',
+    'cart',
     # external packages
     'crispy_forms',
     'crispy_bootstrap5',
