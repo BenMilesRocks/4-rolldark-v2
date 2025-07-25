@@ -100,3 +100,32 @@ def adjust_cart(request, item_id):
 
     # Redirect to last page visited
     return redirect(reverse('view_cart'))
+
+def remove_from_cart(request, item_id):
+    '''Deletes item from cart'''
+
+    try:
+        # Check for ticket options
+        ticket_option = None
+        if 'ticket_option' in request.POST:
+            ticket_option = request.POST['ticket_option']
+
+        # If cart exists in session fetches it, else create empty cart
+        cart = request.session.get('cart', {})
+
+        if ticket_option:
+            del cart[item_id]['game_by_ticket_option'][ticket_option]
+            # If no other tickets for this game exist, delete item_id from cart
+            if not cart[item_id]['game_by_ticket_option']:
+                cart.pop(item_id)
+        else:
+            cart.pop(item_id)
+
+        # Pushes cart back to session
+        request.session['cart'] = cart
+
+        # Redirect to last page visited
+        return HttpResponse(status=200)
+
+    except Exception as e: #pylint: disable=W0612,W0718
+        return HttpResponse(status=500)
