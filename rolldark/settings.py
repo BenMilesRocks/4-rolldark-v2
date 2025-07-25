@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'jquery',
     # Site apps
     'home',
+    'products',
     # external packages
     'crispy_forms',
     'crispy_bootstrap5',
