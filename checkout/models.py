@@ -56,3 +56,25 @@ class Order(models.Model):
 
     def __str__(self):
         return self.order_number
+
+# pylint: disable=C0301
+class OrderLineItem(models.Model):
+    '''Class for line item, allowing iteration through each item in the bag'''
+    order = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
+    product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
+    quantity = models.IntegerField(null=False, blank=False, default=0)
+    lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
+    delivery_charge = models.BooleanField(default=False)
+
+    def save(self, *args, **kwargs):
+        '''
+        Override original save method to set the lineitem total
+        and update the order total
+        '''
+
+        self.lineitem_total = self.product.price * self.quantity # pylint: disable=E1101
+
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'SKU {self.product.sku} on order {self.order.order_number}' # pylint: disable=E1101
