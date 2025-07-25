@@ -59,3 +59,44 @@ def add_product_to_cart(request, item_id):
 
     # Redirect to last page visited
     return redirect(redirect_url)
+
+def adjust_cart(request, item_id):
+    '''Amends the number of items in the cart'''
+
+    # Fetch variables from page
+    quantity = int(request.POST.get('quantity'))
+
+    # Check for ticket options
+    ticket_option = None
+    if 'ticket_option' in request.POST:
+        ticket_option = request.POST['ticket_option']
+
+    # If cart exists in session fetches it, else create empty cart
+    cart = request.session.get('cart', {})
+
+    # Check if product being altered has a ticket option
+    if ticket_option:
+
+        if quantity > 0:
+            # If items left in cart, update quantity
+            cart[item_id]['game_by_ticket_option'][ticket_option] = quantity
+        else:
+            # If quantity == 0, delete item
+            del cart[item_id]['game_by_ticket_option'][ticket_option]
+
+            # If no other tickets for this game exist, delete item_id from cart
+            if not cart[item_id]['game_by_ticket_option']:
+                cart.pop(item_id)
+
+    else:
+        # Update quantity
+        if quantity > 0:
+            cart[item_id] = quantity
+        else:
+            cart.pop(item_id)
+
+    # Pushes cart back to session
+    request.session['cart'] = cart
+
+    # Redirect to last page visited
+    return redirect(reverse('view_cart'))
