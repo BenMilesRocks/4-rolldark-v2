@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container mb-2 text-light mt-5">
+
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h2 class="logo-font mb-4">Order Successful!</h2>
+                <hr>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col">Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</div>
+
+        </div>
+
+    </div>
+{% endblock %}
