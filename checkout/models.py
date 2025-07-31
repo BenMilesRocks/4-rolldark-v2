@@ -39,8 +39,9 @@ class Order(models.Model):
         # If line item deleted sets default to 0 not NONE, hence the 'or 0' line at the end
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0 # pylint: disable=E1101, C0301
 
-        if self.lineitems.delivery_charge: # pylint: disable=E1101, C0301
-            self.delivery_cost = 2.50
+        for items in self.lineitems.all(): # pylint: disable=E1101, C0301
+            if items.delivery_charge:
+                self.delivery_cost += 2.50
 
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
