@@ -1,11 +1,12 @@
+'''Webhooks for checkout app'''
 from django.http import HttpResponse
 from django.conf import settings
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 
-from checkout.webhook_handler import WebHookHandler
-
 import stripe
+
+from checkout.webhook_handler import WebHookHandler
 
 
 @require_POST

@@ -29,7 +29,10 @@ SECRET_KEY = 'django-insecure-qoa-4fels4c*w!uhmbdr(3o7e%_*x86ldlht)s-36b-lf$al(l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1', # VS Code preview
+    'localhost', # listen for stripe webhooks
+]
 
 
 # Application definition
@@ -168,6 +171,7 @@ LOGIN_REDIRECT_URL = '/'
 STRIPE_CURRENCY = 'GBP'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+STRIPE_WH_SECRET = os.getenv('STRIPE_WH_SECRET', '')
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
