@@ -1,8 +1,10 @@
 '''Models for Checkout App'''
 import uuid
+from decimal import Decimal
 
 from django.db import models
 from django.db.models import Sum
+from django.shortcuts import get_object_or_404
 
 from products.models import Product
 
@@ -39,9 +41,10 @@ class Order(models.Model):
         # If line item deleted sets default to 0 not NONE, hence the 'or 0' line at the end
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0 # pylint: disable=E1101, C0301
 
-        for items in self.lineitems.all(): # pylint: disable=E1101, C0301
-            if items.delivery_charge:
-                self.delivery_cost += 2.50
+        for item in self.lineitems.all(): # pylint: disable=E1101, C0301
+            product = get_object_or_404(Product, pk=item.product.id)
+            if product.delivery_charge:
+                self.delivery_cost += Decimal(2.50) * Decimal(item.quantity)
 
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
@@ -65,7 +68,6 @@ class OrderLineItem(models.Model):
     product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
     quantity = models.IntegerField(null=False, blank=False, default=0)
     lineitem_total = models.DecimalField(max_digits=6, decimal_places=2, null=False, blank=False, editable=False)
-    delivery_charge = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         '''

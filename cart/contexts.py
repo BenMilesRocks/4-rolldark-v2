@@ -1,4 +1,5 @@
 '''Cart app contexts'''
+from decimal import Decimal
 from django.shortcuts import get_object_or_404
 from products.models import Product
 
@@ -21,7 +22,7 @@ def cart_contents(request):
             'product': product,
         })
         if product.delivery_charge:
-            delivery = 2.50
+            delivery = Decimal(2.50) * Decimal(quantity)
 
     grand_total = float(delivery) + float(total)
 
