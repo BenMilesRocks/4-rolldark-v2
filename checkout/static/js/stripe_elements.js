@@ -64,7 +64,34 @@ form.addEventListener('submit', function(ev) {
     stripe.confirmCardPayment(clientSecret, {
         payment_method: {
             card: card,
-        }
+            // Pull billing details from form
+            billing_details: {
+                name: $.trim(form.full_name.value),
+                phone: $.trim(form.phone_number.value),
+                email: $.trim(form.email.value),
+                address:{
+                    line1: $.trim(form.street_address1.value),
+                    line2: $.trim(form.street_address2.value),
+                    city: $.trim(form.town_or_city.value),
+                    country: $.trim(form.country.value),
+                    state: $.trim(form.county.value),
+                    // No postcode, as Stripe will override this with postcode in Card element
+                }
+            }
+        },
+        // Pull shipping info from form
+        shipping: {
+            name: $.trim(form.full_name.value),
+            phone: $.trim(form.phone_number.value),
+            address: {
+                line1: $.trim(form.street_address1.value),
+                line2: $.trim(form.street_address2.value),
+                city: $.trim(form.town_or_city.value),
+                country: $.trim(form.country.value),
+                postal_code: $.trim(form.postcode.value),
+                state: $.trim(form.county.value),
+            }
+        },
     }).then(function(result) {
 
         // If error, display message
@@ -88,18 +115,3 @@ form.addEventListener('submit', function(ev) {
         }
     });
 });
-
-// Show a spinner on payment submission - NEEDS IMPLEMENTING
-
-// function setLoading(isLoading) {
-//   if (isLoading) {
-//     // Disable the button and show a spinner
-//     document.querySelector("#submit").disabled = true;
-//     document.querySelector("#spinner").classList.remove("hidden");
-//     document.querySelector("#button-text").classList.add("hidden");
-//   } else {
-//     document.querySelector("#submit").disabled = false;
-//     document.querySelector("#spinner").classList.add("hidden");
-//     document.querySelector("#button-text").classList.remove("hidden");
-//   }
-// }
