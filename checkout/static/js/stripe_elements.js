@@ -60,58 +60,80 @@ form.addEventListener('submit', function(ev) {
     card.update({ 'disabled': true});
     $('#submit-button').attr('disabled', true);
 
-    // Pass card details to Stripe
-    stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-            card: card,
-            // Pull billing details from form
-            billing_details: {
+    // Check for save info on checkout
+    var saveInfo = Boolean($('#id-save-info').attr('checked'));
+
+    // Get CSRF Token from form
+    var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
+
+    // Pass data to view
+    var postData = {
+        'csrfmiddlewaretoken': csrfToken,
+        'client_secret': clientSecret,
+        'save_info': saveInfo,
+    };
+    var url = '/checkout/cache_checkout_data/';
+
+    $.post(url, postData).done(function () {
+        // Pass card details to Stripe
+        stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: card,
+                // Pull billing details from form
+                billing_details: {
+                    name: $.trim(form.full_name.value),
+                    phone: $.trim(form.phone_number.value),
+                    email: $.trim(form.email.value),
+                    address:{
+                        line1: $.trim(form.street_address1.value),
+                        line2: $.trim(form.street_address2.value),
+                        city: $.trim(form.town_or_city.value),
+                        country: $.trim(form.country.value),
+                        state: $.trim(form.county.value),
+                        // No postcode, as Stripe will override this with postcode in Card element
+                    }
+                }
+            },
+            // Pull shipping info from form
+            shipping: {
                 name: $.trim(form.full_name.value),
                 phone: $.trim(form.phone_number.value),
-                email: $.trim(form.email.value),
-                address:{
+                address: {
                     line1: $.trim(form.street_address1.value),
                     line2: $.trim(form.street_address2.value),
                     city: $.trim(form.town_or_city.value),
                     country: $.trim(form.country.value),
+                    postal_code: $.trim(form.postcode.value),
                     state: $.trim(form.county.value),
-                    // No postcode, as Stripe will override this with postcode in Card element
+                }
+            },
+        }).then(function(result) {
+
+            // If error, display message
+            if (result.error) {
+                var errorDiv = document.getElementById('card-errors');
+                var html = `
+                    <span class="icon" role="alert">
+                    <i class="fas fa-times"></i>
+                    </span>
+                    <span>${result.error.message}</span>`;
+                $(errorDiv).html(html);
+                // Re-enable card element & submit to allow user to try again
+                card.update({ 'disabled': false});
+                $('#submit-button').attr('disabled', false);
+                
+            } else {
+                // If success, submit form
+                if (result.paymentIntent.status === 'succeeded') {
+                    form.submit();
                 }
             }
-        },
-        // Pull shipping info from form
-        shipping: {
-            name: $.trim(form.full_name.value),
-            phone: $.trim(form.phone_number.value),
-            address: {
-                line1: $.trim(form.street_address1.value),
-                line2: $.trim(form.street_address2.value),
-                city: $.trim(form.town_or_city.value),
-                country: $.trim(form.country.value),
-                postal_code: $.trim(form.postcode.value),
-                state: $.trim(form.county.value),
-            }
-        },
-    }).then(function(result) {
+        });
 
-        // If error, display message
-        if (result.error) {
-            var errorDiv = document.getElementById('card-errors');
-            var html = `
-                <span class="icon" role="alert">
-                <i class="fas fa-times"></i>
-                </span>
-                <span>${result.error.message}</span>`;
-            $(errorDiv).html(html);
-            // Re-enable card element & submit to allow user to try again
-            card.update({ 'disabled': false});
-            $('#submit-button').attr('disabled', false);
-            
-        } else {
-            // If success, submit form
-            if (result.paymentIntent.status === 'succeeded') {
-                form.submit();
-            }
-        }
+    // If POST fails, reload page. Error will be generated in django messages
+    }).fail(function () {
+        location.reload();
     });
+
+    
 });
