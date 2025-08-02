@@ -64,7 +64,16 @@ def checkout(request):
 
         if order_form.is_valid():
 
-            order = order_form.save()
+            # Create order form (but do not save)
+            order = order_form.save(commit=False)
+            # Create webhook variables
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.stripe_pid = pid
+            order.original_cart = json.dumps(cart)
+
+            # Save order info
+            order.save()
+
 
             # Iterate through the cart, create line items for each
             for item_id, item_data in cart.items():

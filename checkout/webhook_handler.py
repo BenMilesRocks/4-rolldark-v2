@@ -54,15 +54,17 @@ class WebHookHandler:
                 # Check if Order exists
                 order = Order.objects.get( # pylint: disable=E1101
                     full_name__iexact=shipping_details.name,
-                        email__iexact=shipping_details.email,
-                        phone_number__iexact=shipping_details.phone,
-                        country__iexact=shipping_details.country,
-                        postcode__iexact=shipping_details.postal_code,
-                        town_or_city__iexact=shipping_details.city,
-                        street_address1__iexact=shipping_details.line1,
-                        street_address2__iexact=shipping_details.line2,
-                        county__iexact=shipping_details.state,
+                    email__iexact=shipping_details.email,
+                    phone_number__iexact=shipping_details.phone,
+                    country__iexact=shipping_details.country,
+                    postcode__iexact=shipping_details.postal_code,
+                    town_or_city__iexact=shipping_details.city,
+                    street_address1__iexact=shipping_details.line1,
+                    street_address2__iexact=shipping_details.line2,
+                    county__iexact=shipping_details.state,
                     grand_total=grand_total,
+                    original_cart=cart,
+                    stripe_pid=pid,
                 )
                 # If it does, send message that Order is in DB
                 order_exists = True
@@ -94,6 +96,8 @@ class WebHookHandler:
                     street_address2=shipping_details.line2,
                     county=shipping_details.state,
                     grand_total=grand_total,
+                    original_cart=cart,
+                    stripe_pid=pid,
                 )
                 # Add each item in order to Line Items
                 for item_id, item_data in json.loads(cart).items():
