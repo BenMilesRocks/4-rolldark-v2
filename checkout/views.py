@@ -1,15 +1,41 @@
 '''Checkout views.py'''
+
+import json
+
 from django.shortcuts import redirect, render, get_object_or_404
+from django.views.decorators.http import require_POST
 from django.urls import reverse
 from django.contrib import messages
 from django.conf import settings
+from django.http import HttpResponse
 
 import stripe
+
 
 from products.models import Product
 from cart.contexts import cart_contents
 from .forms import OrderForm
 from .models import Order, OrderLineItem
+
+
+@require_POST
+def cache_checkout_data(request):
+    '''Creates cache for checkout data, allowing for user info to be saved'''
+    try:
+        # Get payment intent ID
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        stripe.api_key = settings.STRIPE_SECRET_KEY
+        # Add metadata to checkout info
+        stripe.PaymentIntent.modify(pid, metadata={
+            'bag': json.dumps(request.session.get('bag', {})),
+            'save_info': request.POST.get('save_info'),
+            'username': request.user,
+        })
+        return HttpResponse(status=200)
+    except Exception as e: # pylint: disable=W0718
+        messages.error(request, 'Sorry, your payment cannot be \
+            processed right now. Please try again later.')
+        return HttpResponse(content=e, status=400)
 
 def checkout(request):
     '''Checkout view. Pulls cart from session, else displays error'''
