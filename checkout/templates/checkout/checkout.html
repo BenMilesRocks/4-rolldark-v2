@@ -80,13 +80,13 @@
                     <fieldset class="rounded px-3 mb-5">
 
                         <legend class="fieldset-label small px-2">Delivery Information</legend>
-                        
-                        <p>{{ order_form.country | as_crispy_field }}</p>
-                        <p>{{ order_form.postcode | as_crispy_field }}</p>
-                        <p>{{ order_form.town_or_city | as_crispy_field }}</p>
+                                                
                         <p>{{ order_form.street_address1 | as_crispy_field }}</p>
                         <p>{{ order_form.street_address2 | as_crispy_field }}</p>
+                        <p>{{ order_form.town_or_city | as_crispy_field }}</p>
                         <p>{{ order_form.county | as_crispy_field }}</p>
+                        <p>{{ order_form.country | as_crispy_field }}</p>
+                        <p>{{ order_form.postcode | as_crispy_field }}</p>
                         <p>{{ order_form.phone_number | as_crispy_field }}</p>
 
                         <div class="form-check form-check-inline float-right mr-0">
