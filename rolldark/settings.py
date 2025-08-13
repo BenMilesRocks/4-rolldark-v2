@@ -45,10 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # System apps
-    'allauth',
-    'allauth.account',
-    'jquery',
     # Site apps
     'home',
     'products',
@@ -58,6 +54,10 @@ INSTALLED_APPS = [
     # external packages
     'crispy_forms',
     'crispy_bootstrap5',
+    # System apps
+    'allauth',
+    'allauth.account',
+    'jquery',
 ]
 
 MIDDLEWARE = [
