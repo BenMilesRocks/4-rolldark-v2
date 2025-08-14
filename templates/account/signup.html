@@ -1,0 +1,45 @@
+{% extends "account/base_entrance.html" %}
+{% load allauth i18n %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}
+    {% trans "Register" %}
+{% endblock head_title %}
+
+{% block inner_content %}
+<div class="row">
+    <div class="col">
+        <h2 class="text-center">Register</h2>
+        <hr>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <div class="card text-bg-secondary mb-3 mt-3 p-4">
+            {% url 'account_signup' as action_url %}
+            {% element form form=form method="post" action=action_url tags="entrance,signup" %}
+                {% slot body %}
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    {{ redirect_field }}
+                {% endslot %}
+                {% slot actions %}
+                    <button tags="prominent,signup" type="submit" class="btn btn-light rounded-0">
+                        <span class="font-weight-bold">Register</span>
+                    </button>
+                {% endslot %}
+            {% endelement %}
+        </div>
+        
+    </div>
+</div>
+
+<div class="row">
+    <div class="col text-center">
+        <p>Already have an account? Then please <a href="{{ login_url }}">Log In</a>.</p>
+        <hr>           
+    </div>
+</div>
+
+{% endblock inner_content %}
