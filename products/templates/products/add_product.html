@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 {% load static %}
+{% load crispy_forms_tags %}
 
-<div class="container mt-5">
+{% block content %}
+<div class="container mt-5 text-light">
     <div class="row">
         <div class="col-12 col-md-6">
             <hr>
             <h2 class="logo-font mb-4">Product Management</h2>
-            <h5 class="text-muted">Add a Product</h5>
+            <h5>Add a Product</h5>
             <hr>
         </div>
     </div>
@@ -24,3 +26,4 @@
         </div>
     </div>
 </div>
+{% endblock content %}
