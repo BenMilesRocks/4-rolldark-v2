@@ -34,6 +34,7 @@ DEBUG = os.getenv('DEBUG', 'False')
 ALLOWED_HOSTS = [
     '127.0.0.1', # VS Code preview
     'localhost', # listen for stripe webhooks
+    'rolldark-b52dc36be8e7.herokuapp.com' # Heroku host
 ]
 
 
