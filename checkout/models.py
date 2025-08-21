@@ -9,6 +9,7 @@ from django_countries.fields import CountryField
 
 from products.models import Product
 from profiles.models import UserProfile
+from rolldark.settings import DELIVERY_COST
 
 
 class Order(models.Model):
@@ -51,7 +52,7 @@ class Order(models.Model):
         for item in self.lineitems.all(): # pylint: disable=E1101, C0301
             product = get_object_or_404(Product, pk=item.product.id)
             if product.delivery_charge:
-                self.delivery_cost += Decimal(2.50) * Decimal(item.quantity)
+                self.delivery_cost += Decimal(DELIVERY_COST) * Decimal(item.quantity)
 
         self.grand_total = self.order_total + self.delivery_cost
         self.save()
