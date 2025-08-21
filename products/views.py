@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+from rolldark.settings import DELIVERY_COST
 from .models import Product
 from .forms import ProductForm
 
@@ -47,6 +48,7 @@ def product_detail(request, product_id):
 
     context = {
         'product' : product,
+        'delivery_cost':DELIVERY_COST,
     }
 
     return render(request, 'products/product_detail.html', context)

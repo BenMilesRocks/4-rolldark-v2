@@ -3,6 +3,10 @@
 
 {% block content %}
 
+<!-- hidden elements send price & delivery to JS -->
+<p id="default-price" hidden>{{ product.price }}</p>
+<p id="default-delivery" hidden>{{ delivery_cost|floatformat:2 }}</p>
+
     <div class="container mt-3">
         <div class="row">
             <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
@@ -61,8 +65,6 @@
                             
                             <!-- Price indicator - JS inserts price from priceFunction() -->                        
                             <div id="price-container">
-                                <!-- hidden element sends price to JS -->
-                                <p id="default-price" hidden>{{ product.price }}</p>
                                 <!-- display price based on option -->
                                 <p>                                    
                                     <span id="currency"></span>
@@ -83,20 +85,38 @@
                             {% csrf_token %}
                             
                             <!-- Returns quantity & product ID -->
-                            <input class="form-control" type="number" 
+                            <input class="form-control mb-2" type="number" 
                                 name="quantity" value="1" min="1" max="99" 
                                 data-item_id="{{ product.id }}" 
                                 id="id_qty_{{ product.id }}" onchange="simplePriceFunction()">
                             
                             <!-- Price indicator - JS inserts price from simplePriceFunction() -->                        
                             <div id="price-container">
-                                <!-- hidden element sends price to JS -->
-                                <p id="default-price" hidden>{{ product.price }}</p>
                                 <!-- display price based on option -->
                                 <p>
+                                    <span>Subtotal: </span>
                                     <span id="currency">£</span>
                                     <span id="price">{{ product.price }}</span>
                                 </p>
+                                
+                                <p>
+                                    <span class="fw-light">Delivery charge</span>
+                                    {% if product.delivery_charge %}
+                                    <span class="fw-light">£</span>
+                                    <span id="total-delivery" class="fw-light">{{ delivery_cost|floatformat:2 }}</span>
+                                    {% else %}
+                                    <span class="fw-light">N/A</span>
+                                    {% endif %}
+                                </p>
+
+                                <p class="fw-bold">
+                                    <span>Total: </span>
+                                    <span id="currency">£</span>
+                                    <span id="total-price">{{ product.price }}</span>
+                                </p>
+
+
+                                
                                 
                             </div>
                             
@@ -132,9 +152,6 @@
             else
                 document.getElementById("price").innerHTML = (price * quantity).toFixed(2);
 
-            if (option == null)
-                document.getElementById("price").innerHTML = (price * quantity).toFixed(2);
-
             // Display currency symbol when option selected
             if (option == "")
                 document.getElementById("currency").innerHTML = "";
@@ -145,8 +162,15 @@
         function simplePriceFunction() {
             let amount = document.getElementById("id_qty_{{ product.id }}").value;
             let cost = parseFloat(document.getElementById("default-price").innerText);
+            let delivery = parseFloat(document.getElementById("default-delivery").innerText);
+            let subtotal = (amount * cost)
+            let deliveryTotal = (amount * delivery)
 
-            document.getElementById("price").innerHTML = (amount * cost).toFixed(2);
+            document.getElementById("price").innerHTML = subtotal.toFixed(2);
+
+            document.getElementById("total-delivery").innerHTML = deliveryTotal.toFixed(2);
+
+            document.getElementById("total-price").innerHTML = (subtotal + deliveryTotal).toFixed(2);
         }
     </script>
 
