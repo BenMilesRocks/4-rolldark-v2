@@ -18,6 +18,17 @@ def all_products(request):
 
     return render(request, 'products/products.html', context)
 
+def dice(request):
+    '''View to return products page'''
+
+    products = Product.objects.filter(category__name__contains='dice') # pylint: disable=E1101
+
+    context = {
+        'products':products,
+    }
+
+    return render(request, 'products/dice.html', context)
+
 def product_detail(request, product_id):
     '''Returns details for single product'''
 
