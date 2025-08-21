@@ -23,7 +23,7 @@ body, html {
 /* ----Background panes */
 
 #index-bg-1 {
-    background: url("https://rolldark.s3.amazonaws.com/media/castle_background.png");
+    background: url("https://rolldark.s3.eu-north-1.amazonaws.com/static/media/castle_background.png");
     width: 100%;
     height: 100%;
     background-attachment: relative;
@@ -33,7 +33,7 @@ body, html {
 }
 
 #index-bg-2 {
-    background: url("https://rolldark.s3.amazonaws.com/media/underdark_background.png");
+    background: url("https://rolldark.s3.eu-north-1.amazonaws.com/static/media/underdark_background.png");
     width: 100%;
     height: 100%;
     background-attachment: relative;
