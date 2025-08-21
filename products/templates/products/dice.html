@@ -35,12 +35,8 @@
                                     <div class="row">
                                         <div class="col">
                                             <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
-                                            {% if product.category %}
-                                                <p class="small mt-1 mb-0">
-                                                    <a class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover" href="{% url 'products' %}?category={{ product.category.name }}">
-                                                        <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
-                                                    </a>
-                                                </p>
+                                            {% if product.delivery_charge %}
+                                                <p class="small mt-1 mb-0 text-secondary">+ £2.50 delivery</p>
                                             {% endif %}
                                         </div>                                        
                                     </div>
