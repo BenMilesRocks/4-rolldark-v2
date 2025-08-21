@@ -29,6 +29,17 @@ def dice(request):
 
     return render(request, 'products/dice.html', context)
 
+def games(request):
+    '''View to return products page'''
+
+    products = Product.objects.filter(category__name__contains='game') # pylint: disable=E1101
+
+    context = {
+        'products':products,
+    }
+
+    return render(request, 'products/games.html', context)
+
 def product_detail(request, product_id):
     '''Returns details for single product'''
 
