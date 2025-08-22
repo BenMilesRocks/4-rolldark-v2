@@ -82,12 +82,22 @@ def checkout(request):
 
                 try:
                     product = Product.objects.get(id=item_id) #pylint: disable = E1101
-                    order_line_item = OrderLineItem(
-                        order=order,
-                        product=product,
-                        quantity=item_data,
-                    )
-                    order_line_item.save()
+                    if isinstance(item_data, int):
+                        order_line_item = OrderLineItem(
+                            order=order,
+                            product=product,
+                            quantity=item_data,
+                        )
+                        order_line_item.save()
+                    else:
+                        for option, quantity in item_data['game_by_ticket_option'].items():
+                            order_line_item = OrderLineItem(
+                                order=order,
+                                product=product,
+                                quantity=quantity,
+                                option=option,
+                            )
+                            order_line_item.save()
 
 
                 except Product.DoesNotExist: #pylint: disable = E1101
