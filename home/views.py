@@ -19,6 +19,22 @@ def index(request):
     return render(request, 'home/index.html', context)
 
 @login_required
+def view_all_actions(request):
+    """View to return all call to actions for editing"""
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    call_to_action = CallToAction.objects.all() # pylint: disable=E1101
+
+    context = {
+        'call_to_action': call_to_action,
+    }
+
+    return render(request, 'home/view_all_actions.html', context)
+
+@login_required
 def add_call_to_action(request):
     '''Add a Call to Action to the home page'''
 
