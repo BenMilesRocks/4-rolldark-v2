@@ -5,8 +5,8 @@ from products.widgets import CustomClearableFileInput
 from .models import CallToAction
 
 
-class ProductForm(forms.ModelForm):
-    '''Allows products to be edited in the Products app, rather than in Admin'''
+class CallToActionForm(forms.ModelForm):
+    '''Allows CallToAction to be edited in the Home app, rather than in Admin'''
 
     class Meta: #pylint: disable=C0115
         model = CallToAction
