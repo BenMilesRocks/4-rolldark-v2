@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col">
                 <div class="row">
-                    {% for call_to_action in call_to_action %}
+                    {% for item in call_to_action %}
                     <!-- iterate through call_to_actions -->
                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
 
@@ -17,17 +17,17 @@
 
 
                                 <!-- call_to_action image -->
-                                {% if call_to_action.image %}
-                                    <a href="{% url 'edit_call_to_action' call_to_action.id %}"> 
-                                        <img class="card-img-top img-fluid" src="{{ call_to_action.image.url }}" alt="{{ call_to_action.name }}">
+                                {% if item.image %}
+                                    <a href="{% url 'edit_call_to_action' item.id %}"> 
+                                        <img class="card-img-top img-fluid" src="{{ item.image.url }}" alt="{{ item.name }}">
                                     </a>
                                 {% elif item.image_url %}
-                                    <a href="{% url 'edit_call_to_action' call_to_action.id %}"> 
-                                        <img class="card-img-top img-fluid" src="{{ call_to_action.image_url }}" alt="{{ call_to_action.name }}">
+                                    <a href="{% url 'edit_call_to_action' item.id %}"> 
+                                        <img class="card-img-top img-fluid" src="{{ item.image_url }}" alt="{{ item.name }}">
                                     </a>
                                 {% else %}
-                                    <a href="{% url 'edit_call_to_action' call_to_action.id %}">
-                                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ call_to_action.name }}">
+                                    <a href="{% url 'edit_call_to_action' item.id %}">
+                                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.name }}">
                                     </a>
                                 {% endif %}
                                 
@@ -38,15 +38,15 @@
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="lead mb-0 text-left font-weight-bold">£{{ call_to_action.description }}</p>
+                                            <p class="lead mb-0 text-left font-weight-bold">£{{ item.description }}</p>
                                         </div>                                        
                                     </div>
                                     {% if request.user.is_superuser %}
                                         <div class="row">
                                             <div class="col">
                                                 <small class="ml-3">
-                                                    <a href="{% url 'edit_call_to_action' call_to_action.id %}">Edit</a> | 
-                                                    <a class="text-danger" href="{% url 'delete_call_to_action' call_to_action.id %}">Delete</a>
+                                                    <a href="{% url 'edit_call_to_action' item.id %}">Edit</a> | 
+                                                    <a class="text-danger" href="{% url 'delete_call_to_action' item.id %}">Delete</a>
                                                 </small>
                                             </div>
                                         </div>
