@@ -21,9 +21,6 @@ body, html {
 /* --------index.html-------- */
 
 /* ----Carousel */
-.carousel-image {
-    z-index: -1;
-}
 
 .carousel-card {
     width: 100%;
