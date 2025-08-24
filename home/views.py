@@ -90,14 +90,14 @@ def edit_call_to_action(request, call_to_action_id):
     return render(request, template, context)
 
 @login_required
-def delete_call_to_action(request, call_to_action):
+def delete_call_to_action(request, call_to_action_id):
     '''Delete a product from the store'''
 
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
         return redirect(reverse('home'))
 
-    call_to_action = get_object_or_404(CallToAction, pk=call_to_action)
+    call_to_action = get_object_or_404(CallToAction, pk=call_to_action_id)
     call_to_action.delete()
     messages.success(request, 'call_to_action deleted!')
-    return redirect(reverse('call_to_actions'))
+    return redirect(reverse('home'))
