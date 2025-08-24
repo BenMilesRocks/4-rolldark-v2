@@ -1,5 +1,5 @@
 """Home app views"""
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -56,6 +56,35 @@ def add_call_to_action(request):
     template = 'home/add_call_to_action.html'
     context = {
         'form': form,
+    }
+
+    return render(request, template, context)
+
+@login_required
+def edit_call_to_action(request, call_to_action_id):
+    '''Edit a call to action in the carousel'''
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    call_to_action = get_object_or_404(CallToAction, pk=call_to_action_id)
+    if request.method == 'POST':
+        form = CallToActionForm(request.POST, request.FILES, instance=call_to_action)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Successfully updated product!')
+            return redirect(reverse('home'))
+        else:
+            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+    else:
+        form = CallToActionForm(instance=call_to_action)
+        messages.info(request, f'You are editing {call_to_action.name}')
+
+    template = 'home/edit_call_to_action.html'
+    context = {
+        'form': form,
+        'call_to_action': call_to_action,
     }
 
     return render(request, template, context)
