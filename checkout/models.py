@@ -48,10 +48,14 @@ class Order(models.Model):
 
         # If line item deleted sets default to 0 not NONE, hence the 'or 0' line at the end
         self.order_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum'] or 0 # pylint: disable=E1101, C0301
+        self.delivery_cost = 0
 
         for item in self.lineitems.all(): # pylint: disable=E1101, C0301
             product = get_object_or_404(Product, pk=item.product.id)
-            if product.delivery_charge:
+
+            if not product.delivery_charge:
+                pass
+            elif product.delivery_charge:
                 self.delivery_cost += Decimal(DELIVERY_COST) * Decimal(item.quantity)
 
         self.grand_total = self.order_total + self.delivery_cost
