@@ -5,7 +5,14 @@
 
     <div class="container mt-5">
         <div class="row">
+            <div class="col text-center text-light">
+                <a href="{% url 'add_call_to_action' %}" class="btn btn-light rounded-0">Add a new call to action</a>                
+            </div>
+        </div>
+
+        <div class="row mt-5">
             <div class="col">
+                
                 <div class="row">
                     {% for item in call_to_action %}
                     <!-- iterate through call_to_actions -->
@@ -33,12 +40,12 @@
                                 
                                 <!-- call_to_action description -->
                                 <div class="card-body pb-0">
-                                    <p class="mb-0">{{ call_to_action.name }}</p>
+                                    <p class="mb-0">{{ item.name }}</p>
                                 </div>
                                 <div class="card-footer bg-white pt-0 border-0 text-left">
                                     <div class="row">
                                         <div class="col">
-                                            <p class="lead mb-0 text-left font-weight-bold">£{{ item.description }}</p>
+                                            <p class="lead mb-0 text-left font-weight-bold">{{ item.description }}</p>
                                         </div>                                        
                                     </div>
                                     {% if request.user.is_superuser %}
