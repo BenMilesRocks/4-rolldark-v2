@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container text-light">
+    <div class="row">
+        <div class="col text-center">
+            <h2>You need to be logged in to do that!</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <p>Sorry, you need to be logged in to perform that action. Please log in or register below.</p>
+            <span>
+                <a class="btn btn-light rounded-0" href="{% url 'account_login' %}">Log In</a>
+                <a class="btn btn-light rounded-0" href="{% url 'account_signup' %}">Register</a>
+            </span>
+        </div>
+    </div>
+</div>
+{% endblock %}
