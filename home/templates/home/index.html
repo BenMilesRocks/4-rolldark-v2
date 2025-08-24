@@ -32,13 +32,13 @@
                             <div class="row justify-content-center">
                                 <div class="col col-lg-8">
                                     <!-- Product image -->
-                                    <img src="/media/vecna-cover-art_rHIVcM4.jpg" class="d-block w-100 carousel-image" alt="f">
+                                    <img src="{{ MEDIA_URL }}doorway_background.png" class="d-block w-100 carousel-image" alt="Join our Discord Community">
 
                                     <div class="carousel-card">
                                         <div class="row carousel-header">
                                             <div class="col">
                                                 <!-- Optional Headline Text -->
-                                                <h2 class="fw-bold display-5"></h2>
+                                                <h2 class="fw-bold display-5 mt-3">New to Roleplaying Games?</h2>
                                             </div>
                                         </div>
 
@@ -48,10 +48,10 @@
                                             
                                             <div class="col col-lg-8">
                                                 <!-- Product description, removed on smaller screens -->
-                                                <p class="d-none d-md-block">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat erat quis pulvinar semper. Cras commodo vitae libero ut consequat.</p>
+                                                <p class="d-none d-md-block">No Problem! Our public games are a great place to start playing your favourite Table Top RPG. Begin your adventure today!</p>
                                                 <!-- Call to action button -->
                                                 <p>
-                                                    <a class="btn btn-outline-light btn-lg" href="">Buy now</a>
+                                                    <a class="btn btn-outline-light btn-lg" href="{% url 'games' %}">Browse our games</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -62,17 +62,25 @@
                             </div>
                         </div>
 
-                        <div class="carousel-item">
+                        {% for item in call_to_action %}
+
+                        <div {% if item.dark_text %}class="carousel-item text-black"{% else %}class="carousel-item"{% endif %}>
                             <div class="row justify-content-center">
                                 <div class="col col-lg-8">
                                     <!-- Product image -->
-                                    <img src="/media/swamp_king_dice.jpg" class="d-block w-100 carousel-image" alt="f">
+                                    {% if item.image %}
+                                        <img src="{{ item.image.url }}" alt="{{ item.name }}" class="d-block w-100 carousel-image">
+                                    {% elif item.image_url %}
+                                        <img src="{{ item.image_url }}" alt="{{ item.name }}" class="d-block w-100 carousel-image">
+                                    {% else %}
+                                        <img src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}" class="d-block w-100 carousel-image">
+                                    {% endif %}
 
                                     <div class="carousel-card">
                                         <div class="row carousel-header">
                                             <div class="col">
                                                 <!-- Optional Headline Text -->
-                                                <h2 class="fw-bold display-5"></h2>
+                                                <h2 class="fw-bold display-5">{% if item.headline %}{{ item.headline}}{% endif %}</h2>
                                             </div>
                                         </div>
 
@@ -82,10 +90,12 @@
                                             
                                             <div class="col col-lg-8">
                                                 <!-- Product description, removed on smaller screens -->
-                                                <p class="d-none d-md-block">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam feugiat erat quis pulvinar semper. Cras commodo vitae libero ut consequat.</p>
+                                                <p class="d-none d-md-block">{{ item.description }}</p>
                                                 <!-- Call to action button -->
                                                 <p>
-                                                    <a class="btn btn-outline-light btn-lg" href="">Buy now</a>
+                                                    <a {% if item.dark_text %}class="btn btn-outline-dark btn-lg"{% else %}class="btn btn-outline-light btn-lg"{% endif %} href="{{ item.product_url }}">
+                                                        Buy now
+                                                    </a>
                                                 </p>
                                             </div>
                                         </div>
@@ -95,6 +105,8 @@
                                 </div>
                             </div>
                         </div>
+
+                        {% endfor %}
 
 
                     </div><button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleCaptions" type="button"><span aria-hidden="true" class="carousel-control-prev-icon"></span> <span class="visually-hidden">Previous</span></button> <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleCaptions" type="button"><span aria-hidden="true" class="carousel-control-next-icon"></span> <span class="visually-hidden">Next</span></button>
