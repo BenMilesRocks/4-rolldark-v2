@@ -121,12 +121,20 @@
 
         {% if messages %}
             <div class="message-container"></div>
+
+            {% for message in messages %}
+                {% include 'includes/toasts/toast_success.html' %}
+            {% endfor %}
         {% endif %}
 
         {% block content %}
         {% endblock %}
 
         {% block post_load_js %}
+
+            <script type="text/javascript">
+                $('.toast').toast('show');
+            </script>
         {% endblock %}
         
     </body>
