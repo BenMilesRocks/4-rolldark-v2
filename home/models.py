@@ -14,5 +14,7 @@ class CallToAction(models.Model):
     description = models.CharField(max_length=250)
     dark_text = models.BooleanField(default=False)
 
+    product_url = models.URLField(max_length=1024, null=True, blank=True)
+
     def __str__(self):
         return str(self.name)
