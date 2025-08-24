@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    {% for call_to_action in call_to_action %}
+                    <!-- iterate through call_to_actions -->
+                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+
+
+                        <!-- display card for each call_to_action -->
+                        <div class="card h-100 border-0">
+
+
+                                <!-- call_to_action image -->
+                                {% if call_to_action.image %}
+                                    <a href="{% url 'edit_call_to_action' call_to_action.id %}"> 
+                                        <img class="card-img-top img-fluid" src="{{ call_to_action.image.url }}" alt="{{ call_to_action.name }}">
+                                    </a>
+                                {% elif item.image_url %}
+                                    <a href="{% url 'edit_call_to_action' call_to_action.id %}"> 
+                                        <img class="card-img-top img-fluid" src="{{ call_to_action.image_url }}" alt="{{ call_to_action.name }}">
+                                    </a>
+                                {% else %}
+                                    <a href="{% url 'edit_call_to_action' call_to_action.id %}">
+                                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ call_to_action.name }}">
+                                    </a>
+                                {% endif %}
+                                
+                                <!-- call_to_action description -->
+                                <div class="card-body pb-0">
+                                    <p class="mb-0">{{ call_to_action.name }}</p>
+                                </div>
+                                <div class="card-footer bg-white pt-0 border-0 text-left">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p class="lead mb-0 text-left font-weight-bold">£{{ call_to_action.description }}</p>
+                                        </div>                                        
+                                    </div>
+                                    {% if request.user.is_superuser %}
+                                        <div class="row">
+                                            <div class="col">
+                                                <small class="ml-3">
+                                                    <a href="{% url 'edit_call_to_action' call_to_action.id %}">Edit</a> | 
+                                                    <a class="text-danger" href="{% url 'delete_call_to_action' call_to_action.id %}">Delete</a>
+                                                </small>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                        </div>
+
+                               
+                    </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
