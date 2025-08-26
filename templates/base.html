@@ -133,7 +133,11 @@
         {% block post_load_js %}
 
             <script type="text/javascript">
-                $('.toast').toast('show');
+                const toastElList = document.querySelectorAll('.toast')
+                const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl))
+                for (let toast of toastList) {
+                                        toast.show()
+                                    }
             </script>
         {% endblock %}
         
