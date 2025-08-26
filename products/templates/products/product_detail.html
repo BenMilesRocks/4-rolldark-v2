@@ -43,7 +43,7 @@
                         <form method="POST" action="{% url 'add_product_to_cart' product.id %}">
                             {% csrf_token %}
                             
-                                <select class="form-select mb-2" id="option_{{ product.id }}" onchange="priceFunction()">
+                                <select class="form-select mb-2" id="option_{{ product.id }}" onchange="priceFunction()" name="option_{{ product.id }}">
                                     <option value="" disabled selected>Please select an option</option>
 
                                     {% if product.is_campaign %}

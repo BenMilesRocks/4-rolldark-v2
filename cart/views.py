@@ -22,7 +22,7 @@ def add_product_to_cart(request, item_id):
         if request.POST.get(f'option_{product}') == 'campaign_ticket':
             ticket_option = 'campaign_ticket'
         else:
-            ticket_option = request.POST.get(f'option_{product}')
+            ticket_option = request.POST.get(f'option_{product.id}')
 
     # If cart exists in session fetches it, else create empty cart
     cart = request.session.get('cart', {})
