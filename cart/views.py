@@ -35,9 +35,11 @@ def add_product_to_cart(request, item_id):
             if ticket_option in cart[item_id]['game_by_ticket_option'].keys():
                 # If in cart, increment quantity
                 cart[item_id]['game_by_ticket_option'][ticket_option] += quantity
+                messages.success(request, f'Added {product.name} to your cart')
             else:
                 # Else add ticket option to game ID
                 cart[item_id]['game_by_ticket_option'][ticket_option] = quantity
+                messages.success(request, f'Added {product.name} to your cart')
         else:
             # If not, add new key to cart
             cart[item_id] = {'game_by_ticket_option': {ticket_option: quantity}}
@@ -49,6 +51,7 @@ def add_product_to_cart(request, item_id):
         if item_id in list(cart.keys()):
             # If in cart, increment quantity
             cart[item_id] += quantity
+            messages.success(request, f'Added {product.name} to your cart')
         else:
             # If not, add new key to cart
             cart[item_id] = quantity

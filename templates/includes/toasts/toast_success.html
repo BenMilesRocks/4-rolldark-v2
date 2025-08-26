@@ -36,9 +36,15 @@
             </div>
             <div class="row">
                 <div class="col">
+                    <p class="mt-3 mb-1 text-black">Subtotal:
+                        <span class="float-right">£{{ total|floatformat:2 }}</span>
+                    </p>
+                    <p class="mt-3 mb-1 text-black fw-light">Delivery:
+                        <span class="float-right">£{{ delivery|floatformat:2 }}</span>
+                    </p>
                     <strong><p class="mt-3 mb-1 text-black">
                         Total: 
-                        <span class="float-right">£{{ total|floatformat:2 }}</span>
+                        <span class="float-right">£{{ grand_total|floatformat:2 }}</span>
                     </p></strong>
                     <a href="{% url 'view_cart' %}" class="btn btn-black btn-block rounded-0">
                         <span class="text-uppercase">Go To Secure Checkout</span>
