@@ -40,6 +40,7 @@
                         </div>
                         <div class="col-7">
                             <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                            {% if item.product.game_dates %}<p class="my-0"><strong>Ticket option: </strong>{{ item.option }}</p>{% endif %}
                             <p class="my-0 small">Qty: {{ item.quantity }}</p>
                         </div>
                         <div class="col-3 text-right">
