@@ -29,7 +29,12 @@ def cart_contents(request):
         else:
             product = get_object_or_404(Product, pk=item_id)
             for option, quantity in item_data['game_by_ticket_option'].items():
-                total += quantity * product.price
+
+                option_price = product.price
+                if option == "campaign_ticket":
+                    option_price = product.price * len(product.game_dates)
+
+                total += quantity * option_price
                 product_count += quantity
                 cart_items.append({
                     'item_id': item_id,

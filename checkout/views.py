@@ -2,6 +2,8 @@
 
 import json
 
+from decimal import Decimal
+
 from django.shortcuts import redirect, render, get_object_or_404
 from django.views.decorators.http import require_POST
 from django.urls import reverse
@@ -91,14 +93,20 @@ def checkout(request):
                         order_line_item.save()
                     else:
                         for option, quantity in item_data['game_by_ticket_option'].items():
+
+                            line_price = product.price
+                            if option == "campaign_ticket":
+                                dates = len(product.game_dates)
+                                line_price = Decimal(product.price * dates)
+
                             order_line_item = OrderLineItem(
                                 order=order,
                                 product=product,
                                 quantity=quantity,
                                 option=option,
+                                lineitem_total= line_price* quantity
                             )
                             order_line_item.save()
-
 
                 except Product.DoesNotExist: #pylint: disable = E1101
                     messages.error(request, (
