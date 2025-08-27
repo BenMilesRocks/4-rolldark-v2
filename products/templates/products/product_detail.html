@@ -141,7 +141,7 @@
 
         function priceFunction() {
             // Get length of options for campaign_ticket
-            let length = document.getElementById("option_{{ product.id }}").options.length - 1;
+            let length = document.getElementById("option_{{ product.id }}").options.length - 2;
             // Get selected option and price
             let option = document.getElementById("option_{{ product.id }}").value;
             let quantity = document.getElementById("id_qty_{{ product.id }}").value;
