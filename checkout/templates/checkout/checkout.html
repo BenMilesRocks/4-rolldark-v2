@@ -44,7 +44,11 @@
                             <p class="my-0 small">Qty: {{ item.quantity }}</p>
                         </div>
                         <div class="col-3 text-right">
-                            <p class="my-0 small">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                            {% if item.option == "campaign_ticket" %}
+                                <p class="my-0 small">£ {% campaign_subtotal item.product.price item.product.game_dates item.quantity %} </p>
+                            {% else %}
+                                <p class="my-0 small">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}

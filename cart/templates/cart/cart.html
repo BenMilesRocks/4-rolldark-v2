@@ -46,7 +46,12 @@
                                         <p class="my-0 small">SKU: {{ item.product.sku|upper }}</p>
                                     </td>
                                     <td class="py-3">
-                                        <p class="my-0">£{{ item.product.price }}</p>
+                                        {% if item.option == "campaign_ticket" %}
+                                            <p class="my-0">£ {{ item.product.price | campaign_cost:item.product.game_dates }} </p>
+                                        {% else %}
+                                            <p class="my-0">£{{ item.product.price }}</p>
+                                        {% endif %}
+                                        
                                     </td>
                                     <td class="py-3 w-25">
                                         <p class="my-0">{{ item.quantity }}</p>
@@ -82,7 +87,11 @@
 
                                     <td class="py-3">
                                         <!-- Subtotal, using cart_tools custom filter -->
-                                        <p class="my-0">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                                        {% if item.option == "campaign_ticket" %}
+                                            <p class="my-0">£ {% campaign_subtotal item.product.price item.product.game_dates item.quantity %} </p>
+                                        {% else %}
+                                            <p class="my-0">£{{ item.product.price | calc_subtotal:item.quantity }}</p>
+                                        {% endif %}
                                     </td>
                                 </tr>
                             {% endfor %}
