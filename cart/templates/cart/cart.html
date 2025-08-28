@@ -68,8 +68,10 @@
                                                     <!-- Returns quantity & product ID -->
                                                     <input class="form-control form-control-sm qty_input" type="number" 
                                                         name="quantity" value="{{ item.quantity }}" min="1" max="99" 
-                                                        data-item_id="{{ item.item_id }}" 
+                                                        data-item_id="{{ item.item_id }}"
                                                         id="id_qty_{{ item.item_id }}">
+
+                                                    <input hidden name="ticket_option" value="{{ item.option }}">
                                                     
             
                                                 </div>
@@ -182,7 +184,6 @@
         // When complete, reload page
          .done(function() {
              location.reload();
-             console.log(option);
          });
     })
 </script>
