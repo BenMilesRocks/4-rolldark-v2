@@ -81,7 +81,7 @@
                                         <!-- Buttons to update quantity or remove item from cart -->
                                         
                                         <a class="update-link link-info btt-link"><small>Update</small></a>
-                                        <a class="remove-item link-danger float-end btt-link" id="remove_{{ item.item_id }}" data-product_size="{{ item.size }}"><small>Remove</small></a>
+                                        <a class="remove-item link-danger float-end btt-link" id="remove_{{ item.item_id }}" data-option="{{ item.option }}"><small>Remove</small></a>
                                         
                                     </td>
 
@@ -170,13 +170,19 @@
         // Gets item ID
         var itemId = $(this).attr('id').split('remove_')[1];
         // Submits item ID to remove_from_cart function in cart/views.py
+        var ticket_option = $(this).data('option');
+        
         var url = `/cart/remove/${itemId}/`;
-        var data = {'csrfmiddlewaretoken': csrfToken,};
+        var data = {
+            'csrfmiddlewaretoken': csrfToken,
+            'ticket_option': ticket_option,
+        };
         // POST submission
         $.post(url, data)
         // When complete, reload page
          .done(function() {
              location.reload();
+             console.log(option);
          });
     })
 </script>

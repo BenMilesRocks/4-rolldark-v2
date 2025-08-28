@@ -59,6 +59,7 @@ def add_product_to_cart(request, item_id):
 
     # Pushes cart back to session
     request.session['cart'] = cart
+    print(cart)
 
     # Redirect to last page visited
     return redirect(redirect_url)
@@ -100,6 +101,7 @@ def adjust_cart(request, item_id):
 
     # Pushes cart back to session
     request.session['cart'] = cart
+    print(cart)
 
     # Redirect to last page visited
     return redirect(reverse('view_cart'))
