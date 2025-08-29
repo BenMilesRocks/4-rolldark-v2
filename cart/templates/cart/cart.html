@@ -135,11 +135,14 @@
                 <!-- If cart empty, display message -->
                 {% else %}
                     <p class="lead mb-5 text-light">Your cart is empty.</p>
-                    <a href="{% url 'products' %}" class="btn btn-light rounded-0 btn-lg">
+                    <a href="{% url 'games' %}" class="btn btn-light rounded-0 btn-lg">
                         <span class="icon">
                             <i class="fas fa-chevron-left"></i>
                         </span>
-                        <span class="text-uppercase">Keep Shopping</span>
+                        <span class="text-uppercase">Browse Games</span>
+                    </a>
+                    <a href="{% url 'dice' %}" class="btn btn-light rounded-0 btn-lg">
+                        <span class="text-uppercase">Browse Dice</span>
                     </a>
                 {% endif %}
 
