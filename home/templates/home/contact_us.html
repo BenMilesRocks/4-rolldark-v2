@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+{% endblock %}
+
+<div class="container text-light-mt-5">
+
+    <div class="row">
+        <div class="col">
+            <h2>Contact Us</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+
+            
+                <form action="https://api.web3forms.com/submit" method="POST">
+
+                    <!-- crsf token for security -->
+                    {% csrf_token %}
+
+                    <input type="hidden" name="access_key" value="c18c600b-f9d3-444b-9515-535a40f2caea">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" aria-label="Full Name" id="full-name" required
+                        placeholder="Full Name" name="name" pattern=".*\S+.*" autocomplete="on">
+                    </div>
+
+                    <div class="input-group mb-3">
+                        <input type="email" class="form-control" aria-label="Email Address" id="email-address" 
+                        required placeholder="Email Address" name="email" autocomplete="on">
+                    </div>
+
+                    <div class="input-group">
+                        <textarea class="form-control" aria-label="Game Details" rows="5" 
+                        placeholder="Location | Number of Players | Online or in person | Time of Day | Weeknight or Weekday" 
+                        name="game-info"></textarea>
+                    </div>    
+
+                    <div class="input-group">
+                        <textarea class="form-control" aria-label="Your Message" rows="5" placeholder="Tell us about your group and the kind of story you'd love!" required
+                        name="message"></textarea>
+                    </div>               
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <div>
+                            <button type="submit" class="btn btn-light rounded-0">Send Message</button>
+                        </div>
+                    </div>
+
+                </form>
+            
+
+        </div>
+    </div>
+
+
+</form>
+</div>
