@@ -21,13 +21,7 @@ def index(request):
 def contact_us(request):
     """View to return contact us page"""
 
-    if request.method == 'POST':
-        messages.success(request, "Message sent! We'll be in touch soon!")
-        return redirect(reverse('home'))
-
-    template = 'home/contact_us.html'
-
-    return render(request, template)
+    return render(request, 'home/contact_us.html')
 
 @login_required
 def view_all_actions(request):
