@@ -23,6 +23,11 @@ def contact_us(request):
 
     return render(request, 'home/contact_us.html')
 
+def message_sent(request):
+    """View to return message sent page"""
+
+    return render(request, 'home/message_sent.html')
+
 @login_required
 def view_all_actions(request):
     """View to return all call to actions for editing"""
