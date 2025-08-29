@@ -1,5 +1,5 @@
 '''Cart app views'''
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.urls import reverse
 from django.contrib import messages
 
@@ -35,15 +35,15 @@ def add_product_to_cart(request, item_id):
             if ticket_option in cart[item_id]['game_by_ticket_option'].keys():
                 # If in cart, increment quantity
                 cart[item_id]['game_by_ticket_option'][ticket_option] += quantity
-                messages.success(request, f'Added {product.name} to your cart')
+                messages.success(request, f'Added {product.name} | {ticket_option} to your cart')
             else:
                 # Else add ticket option to game ID
                 cart[item_id]['game_by_ticket_option'][ticket_option] = quantity
-                messages.success(request, f'Added {product.name} to your cart')
+                messages.success(request, f'Added {product.name} | {ticket_option} to your cart')
         else:
             # If not, add new key to cart
             cart[item_id] = {'game_by_ticket_option': {ticket_option: quantity}}
-            messages.success(request, f'Added {product.name} to your cart')
+            messages.success(request, f'Added {product.name} | {ticket_option} to your cart')
 
     # Otherwise just add to cart
     else:
@@ -51,11 +51,11 @@ def add_product_to_cart(request, item_id):
         if item_id in list(cart.keys()):
             # If in cart, increment quantity
             cart[item_id] += quantity
-            messages.success(request, f'Added {product.name} to your cart')
+            messages.success(request, f'Added {quantity} x {product.name} to your cart')
         else:
             # If not, add new key to cart
             cart[item_id] = quantity
-            messages.success(request, f'Added {product.name} to your cart')
+            messages.success(request, f'Added {quantity} x {product.name} to your cart')
 
     # Pushes cart back to session
     request.session['cart'] = cart
@@ -68,6 +68,7 @@ def adjust_cart(request, item_id):
     '''Amends the number of items in the cart'''
 
     # Fetch variables from page
+    product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
 
     # Check for ticket options
@@ -84,20 +85,29 @@ def adjust_cart(request, item_id):
         if quantity > 0:
             # If items left in cart, update quantity
             cart[item_id]['game_by_ticket_option'][ticket_option] = quantity
+            messages.success(
+                    request, f'Updated {product.name} | {ticket_option} in your cart'
+                    )
         else:
             # If quantity == 0, delete item
             del cart[item_id]['game_by_ticket_option'][ticket_option]
+            messages.success(
+                    request, f'Removed {product.name} | {ticket_option} from your cart'
+                    )
 
             # If no other tickets for this game exist, delete item_id from cart
             if not cart[item_id]['game_by_ticket_option']:
                 cart.pop(item_id)
 
+
     else:
         # Update quantity
         if quantity > 0:
             cart[item_id] = quantity
+            messages.success(request, f'Updated {product.name} in your cart')
         else:
             cart.pop(item_id)
+            messages.success(request, f'Removed {product.name} from your cart')
 
     # Pushes cart back to session
     request.session['cart'] = cart
@@ -107,6 +117,8 @@ def adjust_cart(request, item_id):
 
 def remove_from_cart(request, item_id):
     '''Deletes item from cart'''
+
+    product = get_object_or_404(Product, pk=item_id)
 
     try:
         # Check for ticket options
@@ -119,11 +131,15 @@ def remove_from_cart(request, item_id):
 
         if ticket_option:
             del cart[item_id]['game_by_ticket_option'][ticket_option]
+            messages.success(
+                    request, f'Removed {product.name} | {ticket_option} from your cart'
+                    )
             # If no other tickets for this game exist, delete item_id from cart
             if not cart[item_id]['game_by_ticket_option']:
                 cart.pop(item_id)
         else:
             cart.pop(item_id)
+            messages.success(request, f'Removed {product.name} from your cart')
 
         # Pushes cart back to session
         request.session['cart'] = cart
