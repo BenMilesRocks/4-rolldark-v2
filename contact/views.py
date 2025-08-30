@@ -10,13 +10,13 @@ from .forms import ContactForm
 
 class SuccessView(TemplateView):
     '''Return message sent after form submission'''
-    template_name = "message_sent.html"
+    template_name = "contact/success.html"
 
 
 class ContactView(FormView):
     '''Return view for Contact Us page'''
     form_class = ContactForm
-    template_name = "contact_us.html"
+    template_name = "contact/contact_us.html"
 
     def get_success_url(self):
         return reverse("contact_us")

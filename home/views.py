@@ -18,16 +18,6 @@ def index(request):
 
     return render(request, 'home/index.html', context)
 
-def contact_us(request):
-    """View to return contact us page"""
-
-    return render(request, 'home/contact_us.html')
-
-def message_sent(request):
-    """View to return message sent page"""
-
-    return render(request, 'home/message_sent.html')
-
 @login_required
 def view_all_actions(request):
     """View to return all call to actions for editing"""
