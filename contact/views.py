@@ -23,15 +23,19 @@ class ContactView(FormView):
 
     def form_valid(self, form):
         # Use form.cleaned_data because we're getting the data direct from the form, not a model
+        name = form.cleaned_data.get("name")
         email = form.cleaned_data.get("email")
-        subject = form.cleaned_data.get("subject")
+        game_details = form.cleaned_data.get("game_details")
         message = form.cleaned_data.get("message")
 
         full_message = f"""
-            Received message below from {email}, {subject}
+            Received message below from {name}, {email}
             ________________________
 
+            Game info:
+            {game_details}
 
+            Message:
             {message}
             """
         send_mail(
