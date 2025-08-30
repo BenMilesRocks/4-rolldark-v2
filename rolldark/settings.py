@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'cart',
     'checkout',
     'profiles',
+    'about',
     # external packages
     'crispy_forms',
     'crispy_bootstrap5',
