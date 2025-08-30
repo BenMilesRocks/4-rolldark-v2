@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+
+<div class="container text-light">
+    <div class="row">
+        <div class="col text-center">
+            <h2>About Us</h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6 float-left">
+
+            <div class="container">
+                <div class="carousel slide text-center text-white fw-semibold py-5 pointer-event" id="carouselExampleCaptions" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+
+                        <div class="carousel-item active">
+                            <div class="row justify-content-center">
+                                <div class="col col-lg-8">
+                                    <img src="{{ MEDIA_URL }}doorway_background.png" class="d-block w-100 carousel-image" alt="Browse our games">                                  
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div><button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleCaptions" type="button"><span aria-hidden="true" class="carousel-control-prev-icon"></span> <span class="visually-hidden">Previous</span></button> <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleCaptions" type="button"><span aria-hidden="true" class="carousel-control-next-icon"></span> <span class="visually-hidden">Next</span></button>
+                </div>
+
+            
+        </div>
+
+        <div class="col-6 float-right">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis nisi aspernatur amet earum porro vel odio in minima provident. Incidunt necessitatibus praesentium eveniet saepe, in quidem itaque fugit eligendi molestias.</p>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col text-center">
+            <h4>Our Game Masters</h4>
+            <p>All our game masters are highly skilled and come from a performance background, to ensure the most immersive table top roleplaying experiences for your games.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <!-- Headline picture of Robert to be centered in the first row -->
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <!-- Reversible cards for GMs in rows of 3, pulling data from models to dynamically create cards -->
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
