@@ -4,50 +4,87 @@
 {% block content %}
 
 
-<div class="container text-light">
+<div class="container text-light mt-5">
     <div class="row">
         <div class="col text-center">
             <h2>About Us</h2>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-6 float-left">
+    <div class="row align-items-center mt-5">
 
-            <div class="container">
-                <div class="carousel slide text-center text-white fw-semibold py-5 pointer-event" id="carouselExampleCaptions" data-bs-ride="carousel">
-                    <div class="carousel-inner">
+        <div class="col-12 col-lg-6">
 
-                        <div class="carousel-item active">
-                            <div class="row justify-content-center">
-                                <div class="col col-lg-8">
-                                    <img src="{{ MEDIA_URL }}doorway_background.png" class="d-block w-100 carousel-image" alt="Browse our games">                                  
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div><button class="carousel-control-prev" data-bs-slide="prev" data-bs-target="#carouselExampleCaptions" type="button"><span aria-hidden="true" class="carousel-control-prev-icon"></span> <span class="visually-hidden">Previous</span></button> <button class="carousel-control-next" data-bs-slide="next" data-bs-target="#carouselExampleCaptions" type="button"><span aria-hidden="true" class="carousel-control-next-icon"></span> <span class="visually-hidden">Next</span></button>
+            <div id="about-carousel" class="carousel slide">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="{{ MEDIA_URL }}doorway_background.png" class="d-block w-100 carousel-image" alt="Browse our games">
+                    </div>
+                    
                 </div>
 
-            
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
         </div>
 
-        <div class="col-6 float-right">
+        <div class="col-12 col-lg-6">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis nisi aspernatur amet earum porro vel odio in minima provident. Incidunt necessitatibus praesentium eveniet saepe, in quidem itaque fugit eligendi molestias.</p>
         </div>
-
+        
     </div>
 
-    <div class="row">
+    <hr class="mt-4">
+    
+    <div class="row mt-4">
         <div class="col text-center">
             <h4>Our Game Masters</h4>
             <p>All our game masters are highly skilled and come from a performance background, to ensure the most immersive table top roleplaying experiences for your games.</p>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col">
+    <div class="row align-items-center mt-3">
+        <div class="col-12 lg-col-6 mx-auto">
+            <div class="row">
+                <div class="col">
+                    <div class="about-image">
+                        <img src="{{ MEDIA_URL }}robert-bradley.webp" class="mx-auto d-block h-100" alt="Rolldark founder, Robert Bradley">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-lg-8 text-center mx-auto">
+                    <div class="row mt-2">
+                        <div class="col">
+                            <p class="fw-bold">Robert Bradley</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="d-flex justify-content-center mx-auto">
+                                <span class="fw-light p-2">Rolldark Founder & Game Master</span>
+                                <span class="fw-light p-2">|</span>
+                                <span class="fw-light p-2">Oxford</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit ducimus officia vel a, aut dolorum itaque consequuntur cum illo, repudiandae quis assumenda amet explicabo nesciunt id asperiores iste soluta possimus?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
             <!-- Headline picture of Robert to be centered in the first row -->
         </div>
     </div>
