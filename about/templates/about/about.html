@@ -94,28 +94,42 @@
                 <div class="card">
                     <img src="{{ gm.image.url }}" class="card-img-top" alt="{{ gm.name }}">
                     <div class="card-body">
-                        <h5 class="card-title">{{ gm.name }}</h5>
-                        <p class="card-text">Rolldark Game Master | {{ gm.location }}</p>
-                        <button type="button" class="btn btn-outline-dark rounded-0" data-bs-toggle="modal" data-bs-target="#gm-modal-{{ gm.id }}">
-                            More info
-                        </button>
+                        <div class="d-flex justify-content-center">
+                            <h5 class="card-title">{{ gm.name }}</h5>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <p class="card-text">Rolldark Game Master | {{ gm.location }}</p>
+                        </div>
+                        <div class="d-flex justify-content-center mt-2">
+                            <button type="button" class="btn btn-outline-dark rounded-0" data-bs-toggle="modal" data-bs-target="#gm-modal-{{ gm.id }}">
+                                More info
+                            </button>
+                        </div>
                     </div>
                 </div>
 
             </div>
 
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
+            <div class="modal fade" id="gm-modal-{{ gm.id }}" tabindex="-1" aria-labelledby="{{ gm.name }} Pop Up" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <img class="gm-modal-image" src="{{ gm.image.url }}" alt="{{ gm.name }}">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="row w-100">
+                                <div class="col-12">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="row">
+                                        <div class="col-12 d-flex justify-content-center">
+                                            <img class="about-image" src="{{ gm.image.url }}" alt="{{ gm.name }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="modal-body">
+                        <div class="modal-body text-center">
                             {{ gm.description }}
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-outline-dark rounded-0" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
