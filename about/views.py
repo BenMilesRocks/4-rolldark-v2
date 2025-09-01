@@ -37,7 +37,7 @@ def add_gm(request):
     else:
         form = GameMasterForm()
 
-    template = 'home/add_call_to_action.html'
+    template = 'about/add_gm.html'
     context = {
         'form': form,
     }
