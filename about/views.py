@@ -72,3 +72,16 @@ def edit_gm(request, gm_id):
     }
 
     return render(request, template, context)
+
+@login_required
+def delete_gm(request, gm_id):
+    '''Delete a call to action from the carousel'''
+
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, only store owners can do that.')
+        return redirect(reverse('home'))
+
+    gm = get_object_or_404(GameMaster, pk=gm_id)
+    gm.delete()
+    messages.success(request, 'Game Master deleted!')
+    return redirect(reverse('home'))
