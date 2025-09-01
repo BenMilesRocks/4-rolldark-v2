@@ -92,7 +92,11 @@
             <div class="col-xs-12 col-sm-6 col-lg-4">
 
                 <div class="card">
-                    <img src="{{ gm.image.url }}" class="card-img-top" alt="{{ gm.name }}">
+                    {% if gm.image %}
+                        <img src="{{ gm.image.url }}" class="card-img-top" alt="{{ gm.name }}">
+                    {% else %}
+                        <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ gm.name }}">
+                    {% endif %}
                     <div class="card-body">
                         <div class="d-flex justify-content-center">
                             <h5 class="card-title">{{ gm.name }}</h5>
@@ -129,7 +133,11 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     <div class="row">
                                         <div class="col-12 d-flex justify-content-center">
-                                            <img class="about-image" src="{{ gm.image.url }}" alt="{{ gm.name }}">
+                                            {% if gm.image %}
+                                                <img class="about-image" src="{{ gm.image.url }}" alt="{{ gm.name }}">
+                                            {% else %}
+                                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ gm.name }}">
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>

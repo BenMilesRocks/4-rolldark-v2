@@ -20,18 +20,18 @@ def about(request):
 
 @login_required
 def add_gm(request):
-    '''Add a Call to Action to the home page'''
+    '''Add a Game Master to the About page'''
 
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home'))
+        return redirect(reverse('about'))
 
     if request.method == 'POST':
         form = GameMasterForm(request.POST, request.FILES)
         if form.is_valid():
             game_master = form.save() # pylint: disable=W0612
             messages.success(request, f'Successfully added { game_master.name } to Game Masters!')
-            return redirect(reverse('home'))
+            return redirect(reverse('about'))
         else:
             messages.error(request, 'Failed to add Game Master. Please ensure the form is valid.')
     else:
@@ -46,11 +46,11 @@ def add_gm(request):
 
 @login_required
 def edit_gm(request, gm_id):
-    '''Edit a call to action in the carousel'''
+    '''Edit a Game Master in the About page'''
 
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home'))
+        return redirect(reverse('about'))
 
     gm = get_object_or_404(GameMaster, pk=gm_id)
     if request.method == 'POST':
@@ -58,7 +58,7 @@ def edit_gm(request, gm_id):
         if form.is_valid():
             form.save()
             messages.success(request, 'Successfully updated product!')
-            return redirect(reverse('home'))
+            return redirect(reverse('about'))
         else:
             messages.error(request, 'Failed to update product. Please ensure the form is valid.')
     else:
@@ -75,13 +75,13 @@ def edit_gm(request, gm_id):
 
 @login_required
 def delete_gm(request, gm_id):
-    '''Delete a call to action from the carousel'''
+    '''Delete a Game Master from the About page'''
 
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
-        return redirect(reverse('home'))
+        return redirect(reverse('about'))
 
     gm = get_object_or_404(GameMaster, pk=gm_id)
     gm.delete()
     messages.success(request, 'Game Master deleted!')
-    return redirect(reverse('home'))
+    return redirect(reverse('about'))
