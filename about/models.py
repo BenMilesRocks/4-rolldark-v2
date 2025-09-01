@@ -11,7 +11,7 @@ class GameMaster(models.Model):
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
 
-    description = models.CharField(max_length=500, null=False, blank=False)
+    description = models.TextField(max_length=1000, null=False, blank=False)
 
     def __str__(self):
         return str(self.name)
