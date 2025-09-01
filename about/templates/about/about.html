@@ -105,6 +105,16 @@
                                 More info
                             </button>
                         </div>
+                        {% if request.user.is_superuser %}
+                            
+                                <div class="d-flex justify-content-center mt-2">
+                                    <small class="ml-3">
+                                        <a href="{% url 'edit_gm' gm.id %}">Edit</a> | 
+                                        
+                                    </small>
+                                </div>
+                            
+                        {% endif %}
                     </div>
                 </div>
 
