@@ -91,7 +91,7 @@ def edit_call_to_action(request, call_to_action_id):
 
 @login_required
 def delete_call_to_action(request, call_to_action_id):
-    '''Delete a product from the store'''
+    '''Delete a call to action from the carousel'''
 
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, only store owners can do that.')
