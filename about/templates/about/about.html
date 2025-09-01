@@ -83,16 +83,45 @@
                     </div>
                 </div>
             </div>
-
-            
-            <!-- Headline picture of Robert to be centered in the first row -->
         </div>
     </div>
 
-    <div class="row">
-        <div class="col">
-            <!-- Reversible cards for GMs in rows of 3, pulling data from models to dynamically create cards -->
-        </div>
+    <div class="row mt-4">
+        {% for gm in game_masters %}
+
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+
+                <div class="card">
+                    <img src="{{ gm.image.url }}" class="card-img-top" alt="{{ gm.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ gm.name }}</h5>
+                        <p class="card-text">Rolldark Game Master | {{ gm.location }}</p>
+                        <button type="button" class="btn btn-outline-dark rounded-0" data-bs-toggle="modal" data-bs-target="#gm-modal-{{ gm.id }}">
+                            More info
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <img class="gm-modal-image" src="{{ gm.image.url }}" alt="{{ gm.name }}">
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            {{ gm.description }}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        {% endfor %}
     </div>
 
 </div>
