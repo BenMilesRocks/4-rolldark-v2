@@ -3,6 +3,7 @@
 
 {% block extra_meta %}  
     <meta name="description" content="Rolldark Game Master Agency, the first agency for professional game masters for roleplaying games. Find out more about us, and meet our team of professional Game Masters.">
+{% endblock %}
 
 {% block extra_title %}About Us{% endblock %}
 
@@ -169,7 +170,7 @@
                             </div>
                         </div>
                         <div class="modal-body text-center">
-                            {{ gm.description }}
+                            {{ gm.description | linebreaks }}
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-dark rounded-0" data-bs-dismiss="modal">Close</button>
