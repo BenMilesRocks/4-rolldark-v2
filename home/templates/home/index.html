@@ -1,4 +1,11 @@
 {% extends "base.html" %}
+{% block extra_meta %}  
+    <meta name="description" content="Rolldark Game Master Agency, the first agency for professional game masters for roleplaying games. A platform for freelance actors and voice artists to connect with groups.">
+{% endblock %}
+
+{% block extra_title %}Home{% endblock %}
+
+
 {% load static %}
 
 {% block content %}
@@ -21,8 +28,6 @@
             <div class="d-grid gap-2 col-8 col-lg-6 mx-auto mt-5 mb-4">
                 <a class="btn btn-lg btn-outline-light rounded-0" href="{% url 'contact_us' %}" role="button">Book a game today!</a>
             </div>
-            
-            
             
         </div>
     </div>
