@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_meta %}  
+    <meta name="description" content="Rolldark Game Master Agency, the first agency for professional game masters for roleplaying games. A platform for freelance actors and voice artists to connect with groups.">
+{% endblock %}
+
+{% block extra_title %}{{ product.name }}{% endblock %}
+
 {% block content %}
 
 <!-- hidden elements send price & delivery to JS -->
