@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_meta %}  
+    <meta name="description" content="Rolldark Game Master Agency, the first agency for professional game masters for roleplaying games. Your order has been processed, and a confirmation email has been sent to the email address you provided.">
+{% endblock %}
+
+{% block extra_title %}Order Successful{% endblock %}
+
 {% block content %}
 
     <div class="container mb-2 text-light mt-5">
