@@ -43,7 +43,19 @@
         </div>
 
         <div class="col-12 col-lg-6">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis nisi aspernatur amet earum porro vel odio in minima provident. Incidunt necessitatibus praesentium eveniet saepe, in quidem itaque fugit eligendi molestias.</p>
+            <p class="fw-bold">Rolldark: Your Premier Destination for DM for Hire and Professional Dungeon Master Services</p>
+            <p>At Rolldark, we lead a dedicated team of professional Game Masters specialising in Dungeons & Dragons and other roleplaying games across the UK.</p>
+            <p>Whether you're seeking a Dungeon Master for hire for your group of friends, family, or corporate event, we offer unparalleled gaming experiences tailored to your needs.</p>
+            <p class="fst-italic">Why Choose Rolldark for DM for Hire Services?</p>
+            <p>Our mission is simple: to alleviate the burden of Dungeon Master responsibilities, allowing you and your group to immerse in the adventure fully. If you're searching for a DM for hire, Rolldark is your ultimate destination. We connect players with professional Paid DMs who excel in storytelling, acting, and creating captivating role-playing experiences.</p>     
+            <p>
+                <span>
+                    <a class="btn btn-lg btn-outline-light rounded-0" href="{% url 'contact_us' %}" role="button">Contact us to book a private game</a>
+                </span>
+                <span>
+                    <a class="btn btn-lg btn-outline-light rounded-0" href="{% url 'contact_us' %}" role="button">Browse our public games</a>
+                </span>
+            </p>
         </div>
         
     </div>
@@ -58,49 +70,66 @@
     </div>
 
     <div class="row align-items-center mt-3">
-        <div class="col-12 lg-col-6 mx-auto">
-            <div class="row">
-                <div class="col">
-                    <div class="about-image">
-                        <img src="{{ MEDIA_URL }}robert-bradley.webp" class="mx-auto d-block h-100" alt="Rolldark founder, Robert Bradley">
+
+            <div class="col-12 col-md-6 lg-col-4 mx-auto">
+
+                <div class="card">
+                        <img src="{{ MEDIA_URL }}robert-bradley.webp" alt="Rolldark founder, Robert Bradley" class="card-img-top">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-center">
+                            <h5 class="card-title">Robert Bradley</h5>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <p class="card-text">Rolldark Founder & Game Master | Oxford</p>
+                        </div>
+                        <div class="d-flex justify-content-center mt-2">
+                            <button type="button" class="btn btn-outline-dark rounded-0" data-bs-toggle="modal" data-bs-target="#robert-bradley-modal">
+                                More info
+                            </button>
+                        </div>
+                        
                     </div>
                 </div>
+
             </div>
-            <div class="row">
-                <div class="col-12 col-lg-8 text-center mx-auto">
-                    <div class="row mt-2">
-                        <div class="col">
-                            <p class="fw-bold">Robert Bradley</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <div class="d-flex justify-content-center mx-auto">
-                                <span class="fw-light p-2">Rolldark Founder & Game Master</span>
-                                <span class="fw-light p-2">|</span>
-                                <span class="fw-light p-2">Oxford</span>
+
+            <div class="modal fade" id="robert-bradley-modal" tabindex="-1" aria-labelledby="Robert Bradley Pop Up" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header d-flex justify-content-center">
+                            <div class="row w-100">
+                                <div class="col-12">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <div class="row">
+                                        <div class="col-12 d-flex justify-content-center">                                            
+                                            <img src="{{ MEDIA_URL }}robert-bradley.webp" alt="Rolldark founder, Robert Bradley" class="card-img-top">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
+                        <div class="modal-body text-center">  
                             <p>Soon after this image was captured, Robert engaged in a fierce battle against a team of corporate Dungeons and Dragons enthusiasts. But little did they expect him to unleash the formidable Tiamat upon them. The players had this to say about their experience:</p>
                             <p>“As total beginners with Level 1 characters, we were expecting to face kobolds or perhaps even a goblin, but when the god of dragons appeared, our Level 1 characters lasted less than a millisecond.”</p>
                             <p>Robert, the author of the Reckoning Turbines Steampunk series, has been an avid Dungeons and Dragons player for the last 20 years. He says,</p>
                             <p>“Role-playing games have unlocked my creativity and have been a great tool for writers struggling with writer's block. Through the decisions made by the characters, a wealth of conflicts arise, providing endless inspiration for stories.”</p>
                             <p>Robert is also the founder of Rolldark Game Master Agency. He explains,</p>
-                            <p>"There are many Dungeon Masters, each offering something unique to players. What we've done at Rolldark is curating a group of DMs that offer more, not just in terms of storytelling but also in terms of experience and depth. I believe that being a DM is a skill and a talent that should be celebrated as a profession."</p>                                
+                            <p>"There are many Dungeon Masters, each offering something unique to players. What we've done at Rolldark is curating a group of DMs that offer more, not just in terms of storytelling but also in terms of experience and depth. I believe that being a DM is a skill and a talent that should be celebrated as a profession."</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-dark rounded-0" data-bs-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+
     </div>
 
     <div class="row mt-4">
         {% for gm in game_masters %}
 
-            <div class="col-xs-12 col-sm-6 col-lg-4">
+            <div class="col-12 col-md-6 col-lg-4 mt-4">
 
                 <div class="card">
                     {% if gm.image %}
