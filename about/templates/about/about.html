@@ -53,7 +53,7 @@
                     <a class="btn btn-lg btn-outline-light rounded-0" href="{% url 'contact_us' %}" role="button">Contact us to book a private game</a>
                 </span>
                 <span>
-                    <a class="btn btn-lg btn-outline-light rounded-0" href="{% url 'contact_us' %}" role="button">Browse our public games</a>
+                    <a class="btn btn-lg btn-outline-light rounded-0" href="{% url 'games' %}" role="button">Browse our public games</a>
                 </span>
             </p>
         </div>
@@ -74,7 +74,7 @@
             <div class="col-12 col-md-6 lg-col-4 mx-auto">
 
                 <div class="card">
-                        <img src="{{ MEDIA_URL }}robert-bradley.webp" alt="Rolldark founder, Robert Bradley" class="card-img-top">
+                        <img src="{{ MEDIA_URL }}robert-bradley.webp" alt="Rolldark founder, Robert Bradley" class="card-img-top gm-image">
                     <div class="card-body">
                         <div class="d-flex justify-content-center">
                             <h5 class="card-title">Robert Bradley</h5>
@@ -133,7 +133,7 @@
 
                 <div class="card">
                     {% if gm.image %}
-                        <img src="{{ gm.image.url }}" class="card-img-top" alt="{{ gm.name }}">
+                        <img src="{{ gm.image.url }}" class="card-img-top gm-image" alt="{{ gm.name }}">
                     {% else %}
                         <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ gm.name }}">
                     {% endif %}
