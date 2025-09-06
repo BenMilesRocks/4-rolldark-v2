@@ -1,7 +1,22 @@
 body, html {
     height: 100%;
-    background-color: black; 
 }
+
+body {
+    background: url('https://rolldark.s3.eu-north-1.amazonaws.com/static/media/castle_background.png') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: black;
+	z-index: -1;
+}
+
 
 /* ---- bootstrap toasts */
 
