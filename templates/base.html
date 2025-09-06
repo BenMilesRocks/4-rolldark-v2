@@ -41,142 +41,168 @@
     </head>
 
     <body>
+        <div class="page-container">
 
-        <nav class="navbar navbar-expand-lg border-bottom border-body" data-bs-theme="dark" style="background-color:rgba(42, 42, 42, 0.434);">
+            <nav class="navbar navbar-expand-lg border-bottom border-body" data-bs-theme="dark" style="background-color:rgba(42, 42, 42, 0.434);">
 
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'home' %}"><img src="{{ MEDIA_URL }}rolldark_basic_logo.png" id="navbar-logo"></a>
-                <!-- Navbar toggler for smaller screens -->
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{% url 'home' %}"><img src="{{ MEDIA_URL }}rolldark_basic_logo.png" id="navbar-logo"></a>
+                    <!-- Navbar toggler for smaller screens -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                <!-- Page links -->
-                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                    <ul class="navbar-nav nav-underline mb-2 mb-lg-0 me-2">
+                    <!-- Page links -->
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                        <ul class="navbar-nav nav-underline mb-2 mb-lg-0 me-2">
 
-                        <li class="nav-item">
-                            <a {% if request.resolver_match.url_name == 'home' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'home' %}">Home</a>
-                        </li>
+                            <li class="nav-item">
+                                <a {% if request.resolver_match.url_name == 'home' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'home' %}">Home</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a {% if request.resolver_match.url_name == 'games' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'games' %}">Games</a>
-                        </li>
+                            <li class="nav-item">
+                                <a {% if request.resolver_match.url_name == 'games' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'games' %}">Games</a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a {% if request.resolver_match.url_name == 'dice' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'dice' %}">Dice</a>
-                        </li>
+                            <li class="nav-item">
+                                <a {% if request.resolver_match.url_name == 'dice' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'dice' %}">Dice</a>
+                            </li>
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                More Info
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a {% if request.resolver_match.url_name == 'about' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'about' %}">About Rolldark</a></li>
-                                <li><a {% if request.resolver_match.url_name == 'contact_us' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'contact_us' %}">Contact Us</a></li>
-                            </ul>
-                        </li>  
-
-                        
-                        {% if user.is_authenticated %}
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Your Account
+                                    More Info
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="nav-link" href="{% url 'profile' %}">Account Details</a></li>
-                                    <li><a class="nav-link" href="{% url 'account_logout' %}">Log Out</a></li>
+                                    <li><a {% if request.resolver_match.url_name == 'about' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'about' %}">About Rolldark</a></li>
+                                    <li><a {% if request.resolver_match.url_name == 'contact_us' %}class="active nav-link" aria-current="page"{% else %}class="nav-link"{% endif %} href="{% url 'contact_us' %}">Contact Us</a></li>
                                 </ul>
-                            </li>                            
-                            {% if user.is_superuser %}
+                            </li>  
+
+                            
+                            {% if user.is_authenticated %}
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Site Management
+                                        Your Account
                                     </a>
                                     <ul class="dropdown-menu">
-                                        <li class="fw-bold">Products</li>
-                                        <li><a class="nav-link" href="{% url 'products' %}">View all Products</a></li>
-                                        <li><a class="nav-link" href="{% url 'add_product' %}">Add new product</a></li>
-                                        <hr>
-                                        <li class="fw-bold">Call to Action</li>
-                                        <li><a class="nav-link" href="{% url 'add_call_to_action' %}">Add new Call to Action</a></li>
-                                        <li><a class="nav-link" href="{% url 'view_all_actions' %}">Edit Call to Action</a></li>
-                                        <hr>
-                                        <li class="fw-bold">Game Masters</li>
-                                        <li><a class="nav-link" href="{% url 'add_gm' %}">Add new Game Master</a></li>
+                                        <li><a class="nav-link" href="{% url 'profile' %}">Account Details</a></li>
+                                        <li><a class="nav-link" href="{% url 'account_logout' %}">Log Out</a></li>
                                     </ul>
-                                </li>   
-                                
+                                </li>                            
+                                {% if user.is_superuser %}
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Site Management
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li class="fw-bold">Products</li>
+                                            <li><a class="nav-link" href="{% url 'products' %}">View all Products</a></li>
+                                            <li><a class="nav-link" href="{% url 'add_product' %}">Add new product</a></li>
+                                            <hr>
+                                            <li class="fw-bold">Call to Action</li>
+                                            <li><a class="nav-link" href="{% url 'add_call_to_action' %}">Add new Call to Action</a></li>
+                                            <li><a class="nav-link" href="{% url 'view_all_actions' %}">Edit Call to Action</a></li>
+                                            <hr>
+                                            <li class="fw-bold">Game Masters</li>
+                                            <li><a class="nav-link" href="{% url 'add_gm' %}">Add new Game Master</a></li>
+                                        </ul>
+                                    </li>   
+                                    
+                                {% endif %}
+                            {% else %}
+                                <li><a class="nav-link" href="{% url 'account_login' %}">Log In</a></li>
+                                <li><a class="nav-link" href="{% url 'account_signup' %}">Register</a></li>
                             {% endif %}
-                        {% else %}
-                            <li><a class="nav-link" href="{% url 'account_login' %}">Log In</a></li>
-                            <li><a class="nav-link" href="{% url 'account_signup' %}">Register</a></li>
-                        {% endif %}
-                        
-                        
-                        <li class="nav-item">
-                            <a class="{% if grand_total %}text-light font-weight-bold{% else %}text-light{% endif %} nav-link" href="{% url 'view_cart' %}">
-                                <div class="text-center">
-                                    <i class="fa-solid fa-cart-shopping"></i>
-                                    <span class="my-2">
-                                        {% if grand_total %}
-                                            £{{ grand_total|floatformat:2 }}
-                                        {% else %}
-                                            £0.00
-                                        {% endif %}
-                                    </span>
-                                </div>
-                            </a>
-                        </li>
+                            
+                            
+                            <li class="nav-item">
+                                <a class="{% if grand_total %}text-light font-weight-bold{% else %}text-light{% endif %} nav-link" href="{% url 'view_cart' %}">
+                                    <div class="text-center">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                        <span class="my-2">
+                                            {% if grand_total %}
+                                                £{{ grand_total|floatformat:2 }}
+                                            {% else %}
+                                                £0.00
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                </a>
+                            </li>
 
-                    </ul>
-            </div>
-    
-        </nav>
+                        </ul>
+                </div>
+        
+            </nav>
 
-        {% block extra_header %}
-        <!-- extra header element for product search filters, etc -->
-        {% endblock %}
+            {% block extra_header %}
+            <!-- extra header element for product search filters, etc -->
+            {% endblock %}
 
-        {% if messages %}
-            <div class="message-container">
+            {% if messages %}
+                <div class="message-container">
 
-                <!-- Assign toast based on message level -->
-                {% for message in messages %}
+                    <!-- Assign toast based on message level -->
+                    {% for message in messages %}
 
-                    {% with message.level as level %}
-                        {% if level == 40 %}
-                            {% include 'includes/toasts/toast_error.html' %}
-                        {% elif level == 30 %}
-                            {% include 'includes/toasts/toast_warning.html' %}
-                        {% elif level == 25 %}
-                            {% include 'includes/toasts/toast_success.html' %}
-                        {% else %}
-                            {% include 'includes/toasts/toast_info.html' %}
-                        {% endif %}
-                    {% endwith %}
+                        {% with message.level as level %}
+                            {% if level == 40 %}
+                                {% include 'includes/toasts/toast_error.html' %}
+                            {% elif level == 30 %}
+                                {% include 'includes/toasts/toast_warning.html' %}
+                            {% elif level == 25 %}
+                                {% include 'includes/toasts/toast_success.html' %}
+                            {% else %}
+                                {% include 'includes/toasts/toast_info.html' %}
+                            {% endif %}
+                        {% endwith %}
 
-                {% endfor %}
+                    {% endfor %}
 
-            </div>
+                </div>
 
 
-        {% endif %}
+            {% endif %}
 
-        {% block content %}
-        {% endblock %}
+            {% block content %}
+            {% endblock %}
 
-        {% block post_load_js %}
+            {% block post_load_js %}
 
-            <script type="text/javascript">
-                const toastElList = document.querySelectorAll('.toast')
-                const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl))
-                for (let toast of toastList) {
-                                        toast.show()
-                                    }
-            </script>
-        {% endblock %}
+                <script type="text/javascript">
+                    const toastElList = document.querySelectorAll('.toast')
+                    const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl))
+                    for (let toast of toastList) {
+                                            toast.show()
+                                        }
+                </script>
+            {% endblock %}
+
+        </div>
         
     </body>
+
+    <footer>
+        <div class="row footer align-items-center">
+            
+            <div class="col text-center">
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <a target="_blank" href="https://discord.com/invite/jPybcCEe9Y" aria-label="Discord" class="link-light fs-3 p-4"><i class="fa-brands fa-discord" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a target="_blank" href="https://www.facebook.com/RolldarkGMA" aria-label="Facebook" class="link-light fs-3 p-4"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a target="_blank" href="https://www.youtube.com/@RolldarkGameMasterAgency" aria-label="YouTube" class="link-light fs-3 p-4"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a target="_blank" href="https://www.instagram.com/RolldarkGMA" aria-label="Instagram" class="link-light fs-3 p-4"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </footer>
 
 </html>

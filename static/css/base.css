@@ -1,3 +1,7 @@
+/* --------Global Variables-------- */
+
+/* ---- Body */
+
 body, html {
     height: 100%;
 }
@@ -5,6 +9,10 @@ body, html {
 body {
     background: url('https://rolldark.s3.eu-north-1.amazonaws.com/static/media/castle_background.png') no-repeat center center fixed;
     background-size: cover;
+}
+
+.page-container {
+    min-height: 100vh;
 }
 
 .overlay {
@@ -15,6 +23,13 @@ body {
 	position: fixed;
 	background: black;
 	z-index: -1;
+}
+
+/* ---- Footer */
+
+.footer {
+    bottom: 0;
+    width: 100%;    
 }
 
 
