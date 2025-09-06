@@ -21,7 +21,39 @@
         <div class="col-12 col-md-6">
             <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2" enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form | crispy }}
+                <h5>General Info</h5>
+                <hr>
+                {{ form.category | as_crispy_field }}
+                {{ form.sku | as_crispy_field }}
+                {{ form.name | as_crispy_field }}
+                {{ form.description | as_crispy_field }}
+                {{ form.price | as_crispy_field }}
+                <p class="fw-light">If this is for a game, input the price for a single session (campaign prices are calculated automatically from this)</p>
+                <hr>
+                <h5>Product Image</h5>
+                <p class="fw-light">Only use image_url for products already saved on the AWS server. For everything else, upload a new image using the dropdown box below</p>
+                {{ form.image | as_crispy_field }}
+                {{ form.image_url | as_crispy_field }}
+                <hr>
+                <h5>Game Details</h5>
+                <p class="fw-light">This info is specifically for Games. If this is not a game, leave these fields blank.</p>
+                {{ form.game | as_crispy_field }}
+                <p class="fw-bold">Uncheck this field if product is not a game</p>
+                {{ form.date | as_crispy_field }}
+                <p class="fw-light">This is the start date of the game. If this is a campaign, input the first session date</p>           
+                {{ form.day | as_crispy_field }}
+                <p class="fw-light">What day of the week the game is played</p>
+                {{ form.location | as_crispy_field }}
+                <p class="fw-light">If game is online, please input Online</p>
+                {{ form.game_master | as_crispy_field }}
+                {{ form.game_dates | as_crispy_field }}
+                <p class="fw-light">Please be sure to input game dates in JSON format</p>
+                {{ form.is_campaign | as_crispy_field }}
+                {{ form.online_game | as_crispy_field }}
+                <hr>
+                <h5>Product admin</h5>
+                {{ form.product_live | as_crispy_field }}
+                {{ form.delivery_charge | as_crispy_field }}
                 <div class="text-right">
                     <a class="btn btn-danger rounded-0" href="{% url 'products' %}">Cancel</a>
                     <button class="btn btn-light rounded-0" type="submit">Update Product</button>
