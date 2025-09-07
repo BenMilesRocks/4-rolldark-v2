@@ -2,7 +2,7 @@
 
 from django.conf import settings
 from django.core.mail import send_mail
-from django.urls import reverse
+from django.shortcuts import render
 from django.views.generic import TemplateView, FormView
 
 from .forms import ContactForm
@@ -17,9 +17,6 @@ class ContactView(FormView):
     '''Return view for Contact Us page'''
     form_class = ContactForm
     template_name = "contact/contact_us.html"
-
-    def get_success_url(self):
-        return reverse("contact_us")
 
     def form_valid(self, form):
         # Use form.cleaned_data because we're getting the data direct from the form, not a model
@@ -44,4 +41,4 @@ class ContactView(FormView):
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[settings.NOTIFY_EMAIL],
         )
-        return super(ContactView, self).form_valid(form)
+        return render(self.request, "contact/success.html")
