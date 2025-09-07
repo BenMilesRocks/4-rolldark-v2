@@ -18,8 +18,14 @@
 
     <div class="row">
         <div class="col-12 col-md-6">
-            <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data">
+            <form method="POST" action="{% url 'add_product' %}" class="form mb-2" enctype="multipart/form-data" id="form">
                 {% csrf_token %}
+
+                <!-- Hidden Game Dates, updated using JS functions on submission -->
+                <div hidden id="game-dates-json">
+                    {{ form.game_dates | as_crispy_field }}
+                </div>
+                
                 <h5>General Info</h5>
                 <hr>
                 {{ form.category | as_crispy_field }}
@@ -45,8 +51,13 @@
                 {{ form.location | as_crispy_field }}
                 <p class="fw-light">If game is online, please input Online</p>
                 {{ form.game_master | as_crispy_field }}
-                {{ form.game_dates | as_crispy_field }}
-                <p class="fw-light">Please be sure to input game dates in JSON format</p>
+
+                <label for="dates" class="form-label">Number of game dates:</label>
+                <input type="number" id="dates" name="dates" class="form-control rounded-0" value="0" min="0" onclick="addFields()">
+                <div id="game-date-container"></div>
+
+
+
                 {{ form.is_campaign | as_crispy_field }}
                 {{ form.online_game | as_crispy_field }}
                 <hr>
@@ -55,10 +66,60 @@
                 {{ form.delivery_charge | as_crispy_field }}
                 <div class="text-right">
                     <a class="btn btn-danger rounded-0" href="{% url 'products' %}">Cancel</a>
-                    <button class="btn btn-light rounded-0" type="submit">Add Product</button>
+                    <button class="btn btn-light rounded-0" type="button" id="submit">Add Product</button>
+                    <button type="submit" id="post" hidden>Hidden Submit Button</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 {% endblock content %}
+
+{% block post_load_js %}
+{{ block.super}}
+
+<script type='text/javascript'>
+
+    function addFields(){
+        // Generate a dynamic number of inputs
+        var number = document.getElementById("dates").value;
+        // Get the element where the inputs will be added to
+        var container = document.getElementById("game-date-container");
+        // Remove every children it had before
+        while (container.hasChildNodes()) {
+            container.removeChild(container.lastChild);
+        }
+        for (i=0;i<number;i++){
+            // Append a node with a random text
+            container.appendChild(document.createTextNode("Date " + (i+1)));
+            // Create an <input> element, set its type and name attributes
+            var input = document.createElement("input");
+            input.type = "date";
+            input.name = "game-date-" + i;
+            input.id = "game-date-" + i;
+            container.appendChild(input);
+            // Append a line break 
+            container.appendChild(document.createElement("br"));
+        }
+    }
+
+    document.getElementById("submit").addEventListener("click", function (event) {
+        // Check how many game dates there are
+        var dates = document.getElementById("dates").value;
+        var jsonString = ""
+        // adds game dates to jsonString
+        for (i=0;i<dates;i++){
+            var selection = document.getElementById("game-date-" + i).value;
+            var number = i + 1
+            jsonString += '"' + number + '"' + ':' + '"' + selection + '"' + ','
+        }
+        // creates JSON object for output
+        var output = '{' + jsonString.slice(0, -1) + '}';
+        // inputs this value into the form submission
+        document.getElementById("id_game_dates").value = output;
+        // submit form
+        document.getElementById("post").click();
+        });
+
+</script>
+{% endblock %}
