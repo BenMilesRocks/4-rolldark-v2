@@ -221,6 +221,32 @@ Additional testing was taken by friends and family on a variety of devices and s
 | **View all Actions Page** | --- | --- | --- | --- |
 | Call to Action cards | Should display all call to action items on database | Opened View all Actions page | Call To Action cards displaying correctly | **PASS** |
 | Edit button | Should load Edit Call to Action page, with the relevant data lodaded | Clicked Edit button on multiple Call to Actions | Redirected to Edit Call to Action page, with correct info loaded | **PASS** |
+| Delete button | Should bring up modal confirming Call to Action deletion | Clicked Delete button | Modal displayed correctly | **PASS** |
+| Delete Modal | Cancel button should close modal, delete button should delete the relevant Call to Action | Clicked cancel, clicked delete | Cancel closes modal, Delete button deletes the correct Call to Action from database | **PASS** |
+| Call to Action link | Should redirect to Edit Call to Action page with relevant Call to Action information | Clicked Call to Action link | Redirected to Edit Call to Action, with correct Call to Action info loaded | **PASS** |
+| --- | --- | --- | --- | --- |
+| **Add Game Master Page** | --- | --- | --- | --- |
+| Form Validation | Should display errors if form not filled in correctly, should not submit form | Filled in form with errors | All errors displayed correctly, form not submitted | **PASS** |
+| Cancel button | Should redirect to About Us page | Clicked Cancel button | Redirects to About Us page | **PASS** |
+| Add Game Master | Should add Game Master to database | Filled in form, clicked Add Game Master | Game Master added to database | **PASS** |
+| --- | --- | --- | --- | --- |
+| **Cart Page** | --- | --- | --- | --- |
+| Cart Summary | Should display summary of items in cart, if empty should display links to purchase Games & Dice | Opened page with empty cart, added items to cart | Displays summary of items in cart, if empty displays links to purchase Games & Dice | **PASS** |
+| Update button | Should update quantity of item to selected amount | Selected new quantity, clicked update | Updated quantity of item in cart | **PASS** |
+| Delete button | Should open modal confirming delete | Clicked Delete button | Modal opened successfully | **PASS** |
+| Totals | Should update with the subtotal, cart total, delivery cost and Grand Total depending on items in cart | Added items to cart, both with and without delivery costs | Updates with the subtotal, cart total, delivery cost and Grand Total depending on items in cart | **PASS** |
+| Checkout Button | Should redirect to Checkout page | Clicked Checkout button | Redirected to Checkout page | **PASS** |
+| --- | --- | --- | --- | --- |
+| **Checkout Page** | --- | --- | --- | --- |
+| Cart Summary | Should display summary of items in cart | Opened Checkout page | Displays summary of items in cart | **PASS** |
+| Form Validation | Should display errors if form not filled in correctly, should not submit form | Filled in form with errors | All errors displayed correctly, form not submitted | **PASS** |
+| Save delivery info | On form submit should save details to user's profile | Checked save delivery info, completed order | Info saved to profile correctly | **PASS** |
+| Adjust Cart | Should redirect back to Cart page | Clicked Adjust Cart | Redirected to Cart page | **PASS** |
+| Complete Order | Should process order, redirect to Order Summary | Clicked Complete Order | Order proccessed & saved on database, redirected to Order Summary page | **PASS** |
+| Confirmation Email | On order completion should send confirmation email to user | Clicked Complete Order | Email not received (previously was successful) | **FAIL** |
+| --- | --- | --- | --- | --- |
+| **Checkout Success Page** | --- | --- | --- | --- |
+| Order Summary | Should display order summary | Proccessed order | Order Summary displayed correctly | **PASS** |
 | --- | --- | --- | --- | --- |
 
 - - -
