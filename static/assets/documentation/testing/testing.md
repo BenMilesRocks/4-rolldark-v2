@@ -66,27 +66,48 @@ I used Lighthouse within the Chrome Developer Tools to test the performance, acc
 
 ### Testing User Stories
 
+**All Users**
+| **Goals** | **How are they achieved?** |
+| --- | --- |
+| I want the site to be responsive to my device | The site has been tested on a range of devices to ensure it is responsive to multiple screen sizes |
+| I want the site to be easy to navigate | The navigation bar is clearly labled, to make it as simple as possible to navigate |
+| I want to be able to check out quickly and easily if I make a purchase | Toasts pop up after each item is added to the cart, inviting user to go to the Checkout quickly. Purchases can be made whilst logged out, for ease of use |
+| I want to be able to sort products according to my needs | The site is split into two simple categories - Games and Dice. This makes it easy for customers to find the type of product they are looking for, whilst still giving control over what products are displayed |
+
 **First Time Visitors**
 
 | **Goals** | **How are they achieved?** |
 | --- | --- |
-
+| I want to quickly understand the services Rolldark Game Master Agency offer | The home page has multiple, clear call to action elements to inform users about products that are available |
+| I want the user registration process to be quick and easy | User registration is as simple as possible, with verification being automated for conveneince |
 
 **Returning Visitors**
 
 | **Goals** | **How are they achieved?** |
 | --- | --- |
+| I want to be able to quickly navigate to the relevant part of the site for my needs | The nav bar is split into simple, easy to understand elements to make it easy to navigate to the part of the site you want |
+| I want the option to stay logged in for faster checkout | The site remembers previous users, and keeps them logged in unless they actively log out. There is also the option to save delivery info for faster checkout |
 
-
-**Frequent Visitors**
-
-| **Goals** | **How are they achieved?** |
-| --- | --- |
 
 **Admin Users**
 
+*Purchases*
+
 | **Goals** | **How are they achieved?** |
 | --- | --- |
+| I want the site to automatically respond to customers, confirming purchases | The site has automated messages enabled, confirming user registration and purchases automatically |
+| I want customers to be able to see previous purchases, allowing them to easily purchase the same items again | The User Profile shows their order history, allowing them to see what items they have purchased before |
+| I want customers to be able to contact us directly through the site, without the need to refer them to a 3rd party API | The site has a Contact form that emails the admin team directly, without the need for 3rd party APIs or navigation away from the site |
+
+*Site Management*
+
+| **Goals** | **How are they achieved?** |
+| --- | --- |
+| I want to be able to add products to the site easily | The site has an Add Product page, allowing ease of product creation |
+| I want to be able to edit and delete products through the main site, not the admin panel | The site has full CRUD functionality for products |
+| I want to be able to select if a product is "Live" or not, allowing me to temporarily remove or edit products without deleting them from the database | Products have a "product_live" value, which allows Admin users to remove a product from active view if needed |
+| I want to edit the advertising on my homepage, informing customers of new products without the need for a webmaster | The Edit Call to Action page allows Admin users to dynamically create advertising, with full CRUD functionality |
+| I want to be able to create, edit and delete Game Master profiles, to keep the team info up to date easily | The site allows full CRUD functionality for all Game Master details, allowing the site to dynamically populate the Game Master details shown on the About Us page |
 
 - - -
 

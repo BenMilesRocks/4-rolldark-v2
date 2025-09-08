@@ -48,9 +48,7 @@ The business currently uses a variety of third party solutions to run its websit
 | | I want the user registration process to be quick and easy |
 | **Returning User** | I want to be able to quickly navigate to the relevant part of the site for my needs |
 | | I want the option to stay logged in for faster checkout |
-| | I want the site to remember what games I have shown interest in before |
-| **Frequent User** | I want to be able to find games that fit my schedule and budget |
-| | I want to see what games I am currently signed up for |
+
 ---
 | **Admin User Stories** | |
 |---|---|
