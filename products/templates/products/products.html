@@ -6,87 +6,104 @@
     <!-- Background overlay to cover home image -->
     <div class="overlay"></div>
 
-    <div class="container mt-5">
+    <div class="container mt-5 text-light">
         <div class="row">
+            <h3 class="text-center">Inactive Products</h3>
+            <hr class="mb-5">
             <div class="col">
                 <div class="row">
-                    {% for product in products %}
-                        {% if not product.product_live %}
-                        <!-- iterate through products -->
-                        <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                    {% if request.user.is_superuser %}
+                        {% for product in products %}
+                            {% if not product.product_live %}
+                            <!-- iterate through products -->
+                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
 
 
-                            <!-- display card for each product -->
-                            <div class="card h-100 border-0">
+                                <!-- display card for each product -->
+                                <div class="card h-100 border-0">
 
 
-                                    <!-- Product image -->
-                                    {% if product.image %}
-                                        <a href="{% url 'product_detail' product.id %}"> 
-                                            <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
-                                        </a>
-                                    {% else %}
-                                        <a href="{% url 'product_detail' product.id %}">
-                                            <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
-                                        </a>
-                                    {% endif %}
-                                    
-                                    <!-- Product description -->
-                                    <div class="card-body pb-0">
-                                        <p class="mb-0">{{ product.name }}</p>
-                                    </div>
-                                    <div class="card-footer bg-white pt-0 border-0 text-left">
-                                        <div class="row">
-                                            <div class="col">
-                                                <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
-                                                {% if product.category %}
-                                                    <p class="small mt-1 mb-0">
-                                                        <a class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover" href="{% url 'products' %}?category={{ product.category.name }}">
-                                                            <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
-                                                        </a>
-                                                    </p>
-                                                {% endif %}
-                                            </div>                                        
+                                        <!-- Product image -->
+                                        {% if product.image %}
+                                            <a href="{% url 'product_detail' product.id %}"> 
+                                                <img class="card-img-top img-fluid" src="{{ product.image.url }}" alt="{{ product.name }}">
+                                            </a>
+                                        {% else %}
+                                            <a href="{% url 'product_detail' product.id %}">
+                                                <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                            </a>
+                                        {% endif %}
+                                        
+                                        <!-- Product description -->
+                                        <div class="card-body pb-0">
+                                            <p class="mb-0">{{ product.name }}</p>
                                         </div>
-                                        {% if request.user.is_superuser %}
+                                        <div class="card-footer bg-white pt-0 border-0 text-left">
                                             <div class="row">
                                                 <div class="col">
-                                                    <small class="ml-3">
-                                                        <a href="{% url 'edit_product' product.id %}">Edit</a> | 
-                                                        <a class="text-danger" href="#delete{{product.id}}" data-bs-toggle="modal" data-bs-target="#delete{{product.id}}">Delete</a>
-                                                    </small>
-                                                </div>
+                                                    <p class="lead mb-0 text-left font-weight-bold">£{{ product.price }}</p>
+                                                    {% if product.category %}
+                                                        <p class="small mt-1 mb-0">
+                                                            <a class="link-secondary link-offset-2 link-underline-opacity-0 link-underline-opacity-75-hover" href="{% url 'products' %}?category={{ product.category.name }}">
+                                                                <i class="fas fa-tag mr-1"></i>{{ product.category.friendly_name }}
+                                                            </a>
+                                                        </p>
+                                                    {% endif %}
+                                                </div>                                        
                                             </div>
+                                            {% if request.user.is_superuser %}
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <small class="ml-3">
+                                                            <a href="{% url 'edit_product' product.id %}">Edit</a> | 
+                                                            <a class="text-danger" href="#delete{{product.id}}" data-bs-toggle="modal" data-bs-target="#delete{{product.id}}">Delete</a>
+                                                        </small>
+                                                    </div>
+                                                </div>
 
-                                            <!-- Delete Product Modal -->
-                                            <div class="modal fade" id="delete{{product.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete {{ product.name }}?</h1>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <p>You're about to delete this product:</p>
-                                                            <p class="text-center fw-bold">{{ product.name }}</p>
-                                                            <p class="text-center">{{ product.sku }}</p>
-                                                            <p class="text-center">£{{ product.price }}</p>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                            <a class="btn btn-danger" href="{% url 'delete_product' product.id %}">Delete Product</a>
+                                                <!-- Delete Product Modal -->
+                                                <div class="modal fade" id="delete{{product.id}}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="staticBackdropLabel">Delete {{ product.name }}?</h1>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p>You're about to delete this product:</p>
+                                                                <p class="text-center fw-bold">{{ product.name }}</p>
+                                                                <p class="text-center">{{ product.sku }}</p>
+                                                                <p class="text-center">£{{ product.price }}</p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                                <a class="btn btn-danger" href="{% url 'delete_product' product.id %}">Delete Product</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        {% endif %}
-                                    </div>
-                            </div>
+                                            {% endif %}
+                                        </div>
+                                </div>
 
-                                
+                                    
+                            </div>
+                            {% endif %}
+                        {% endfor %}
+
+                    {% else %}
+
+                        <div class="col">
+                            <h3>Whoops!</h3>
+                            <hr>
+                            <p>There seems to be a mistake, this section is for admin users only!</p>
+                            <p>Please click the link below to return to the home page:</p>
+                            <p>
+                                <a href="{% url 'home' %}" class="btn btn-light rounded-0 mt-5">Home</a>  
+                            </p>
                         </div>
-                        {% endif %}
-                    {% endfor %}
+
+                    {% endif %}
                 </div>
             </div>
         </div>
