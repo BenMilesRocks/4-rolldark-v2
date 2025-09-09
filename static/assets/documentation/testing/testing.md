@@ -2,7 +2,7 @@
 
 ![The Rolldark site shown on a variety of screen sizes](static/assets/documentation/screenshots/responsive-image.jpg)
 
-Visit the deployed site: [Scrum Maester](https://rolldark-b52dc36be8e7.herokuapp.com/)
+Visit the deployed site: [Rolldark](https://rolldark-b52dc36be8e7.herokuapp.com/)
 
 - - -
 
