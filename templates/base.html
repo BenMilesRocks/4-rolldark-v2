@@ -46,7 +46,7 @@
             <nav class="navbar navbar-expand-lg border-bottom border-body" data-bs-theme="dark" style="background-color:rgba(42, 42, 42, 0.434);">
 
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="{% url 'home' %}" name="Home Page"><img src="{{ MEDIA_URL }}rolldark_basic_logo.png" alt="Rolldark Logo" id="navbar-logo"></a>
+                    <a class="navbar-brand" href="{% url 'home' %}" name="Home"><img src="{{ MEDIA_URL }}rolldark_basic_logo.png" alt="Rolldark Logo" id="navbar-logo"></a>
                     <!-- Navbar toggler for smaller screens -->
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -131,6 +131,7 @@
                             </li>
 
                         </ul>
+                    </div>
                 </div>
         
             </nav>
@@ -180,29 +181,30 @@
 
         </div>
         
+        <footer>
+            <div class="row footer align-items-center">
+                
+                <div class="col text-center">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a target="_blank" href="https://discord.com/invite/jPybcCEe9Y" aria-label="Discord" class="link-light fs-3 p-4"><i class="fa-brands fa-discord" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a target="_blank" href="https://www.facebook.com/RolldarkGMA" aria-label="Facebook" class="link-light fs-3 p-4"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a target="_blank" href="https://www.youtube.com/@RolldarkGameMasterAgency" aria-label="YouTube" class="link-light fs-3 p-4"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a target="_blank" href="https://www.instagram.com/RolldarkGMA" aria-label="Instagram" class="link-light fs-3 p-4"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+    
+            </div>
+        </footer>
+        
     </body>
 
-    <footer>
-        <div class="row footer align-items-center">
-            
-            <div class="col text-center">
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <a target="_blank" href="https://discord.com/invite/jPybcCEe9Y" aria-label="Discord" class="link-light fs-3 p-4"><i class="fa-brands fa-discord" aria-hidden="true"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a target="_blank" href="https://www.facebook.com/RolldarkGMA" aria-label="Facebook" class="link-light fs-3 p-4"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a target="_blank" href="https://www.youtube.com/@RolldarkGameMasterAgency" aria-label="YouTube" class="link-light fs-3 p-4"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a target="_blank" href="https://www.instagram.com/RolldarkGMA" aria-label="Instagram" class="link-light fs-3 p-4"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-    </footer>
 
 </html>
