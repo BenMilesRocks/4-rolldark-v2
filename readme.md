@@ -1,5 +1,7 @@
 # Rolldark Game Master Agency
 
+![The Rolldark site shown on a variety of screen sizes](static/assets/documentation/screenshots/responsive-image.jpg)
+
 Rolldark Game Master Agency are a UK based company who provide paid Game Masters for Table Top Roleplaying Games both online and in person, as well as provide supplimentary products like Dice and Dungeons and Dragons modules for customers to run themselves.
 
 The business currently uses a variety of third party solutions to run its website, which they have shown an interest in consolodating into one solution. They have mentioned several challenges they currently face. By creating a website with a robust database, we can consolodate many of those solutions into one place with a great deal of scope for future expansion.
