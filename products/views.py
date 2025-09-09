@@ -8,8 +8,9 @@ from rolldark.settings import DELIVERY_COST
 from .models import Product
 from .forms import ProductForm
 
-def all_products(request):
-    '''View to return products page'''
+@login_required
+def disabled_products(request):
+    '''View to return non-live products page'''
 
     products = Product.objects.all() # pylint: disable=E1101
 
