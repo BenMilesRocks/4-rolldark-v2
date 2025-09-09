@@ -58,7 +58,11 @@ Explaination of issues ignored
 
 I used Lighthouse within the Chrome Developer Tools to test the performance, accessibility, best practices and SEO of the website. The site scored highly across the board:
 
-![Lighthouse scores]()
+![Lighthouse scores](/static/assets/documentation/testing/lighthouse/index-lh-full.jpg)
+
+The main issue flagged was the use of 3rd party cookies, which are part of the Stripe API and not something I am capable of altering.
+
+![Lighthouse scores - Best Practices](static/assets/documentation/testing/lighthouse/index-lh-bp.png)
 
 - - -
 
@@ -134,6 +138,7 @@ Each device tested the site using the following browsers:
 
 Additional testing was taken by friends and family on a variety of devices and screen sizes. They reported no issues when using the site.
 
+All testing below was performed on both my local development environment and the deployed version of the site, to ensure thoroughness of testing.
 
 | **Feature** | **Expected Outcome** | **Testing Performed** | **Result** | **Pass/Fail** |
 | --- | --- | --- | --- | --- |
@@ -264,7 +269,7 @@ Additional testing was taken by friends and family on a variety of devices and s
 | Save delivery info | On form submit should save details to user's profile | Checked save delivery info, completed order | Info saved to profile correctly | **PASS** |
 | Adjust Cart | Should redirect back to Cart page | Clicked Adjust Cart | Redirected to Cart page | **PASS** |
 | Complete Order | Should process order, redirect to Order Summary | Clicked Complete Order | Order proccessed & saved on database, redirected to Order Summary page | **PASS** |
-| Confirmation Email | On order completion should send confirmation email to user | Clicked Complete Order | Email not received (previously was successful) | **FAIL** |
+| Confirmation Email | On order completion should send confirmation email to user | Clicked Complete Order | Email received on local host, but does not send in production server | **FAIL** |
 | --- | --- | --- | --- | --- |
 | **Checkout Success Page** | --- | --- | --- | --- |
 | Order Summary | Should display order summary | Proccessed order | Order Summary displayed correctly | **PASS** |

@@ -7,7 +7,7 @@ body, html {
 }
 
 body {
-    background: url('https://rolldark.s3.eu-north-1.amazonaws.com/static/media/castle_background.png') no-repeat center center fixed;
+    background: url('https://rolldark.s3.eu-north-1.amazonaws.com/static/media/castle_background.webp') no-repeat center center fixed;
     background-size: cover;
 }
 
