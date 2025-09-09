@@ -11,7 +11,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.http import HttpResponse
 
-import stripe
+import stripe #pylint: disable=E0401
 
 
 from products.models import Product

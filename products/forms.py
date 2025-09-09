@@ -7,7 +7,8 @@ from .widgets import CustomClearableFileInput
 class ProductForm(forms.ModelForm):
     '''Allows products to be edited in the Products app, rather than in Admin'''
 
-    class Meta: #pylint: disable=C0115
+    class Meta:
+        '''ProductForm Meta'''
         model = Product
         fields = '__all__'
 

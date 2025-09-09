@@ -61,14 +61,88 @@ I used [W3C's Jigsaw Validator](https://jigsaw.w3.org/css-validator/) to test my
 I used [The Pylint extension for VS Code](https://www.pylint.org/) to ensure my code was up to PEP-8 standards. Most of the issues raised by this were "E1101 - Instance has no Member", which were raised erroneaously 
 because the objects were created dynamically (and as such can be safely ignored).
 
-**App name**
+**Rolldark App**
 
-File Name
+Settings.py 
 
-![image of file scanned]()
+| **Error Raised** | **Why was it ignored?** |
+| --- | --- |
+| Unable to import dj_database_url | This module has been installed correctly, and works as expected in the production environment. It is unclear why pylint is raising this error |
+| Unused import 'env' | This import is not declared, but is used to check global variables in the testing environment. Issue rasied in error. |
 
-Explaination of issues ignored
+**Cart App**
 
+views.py 
+
+| **Error Raised** | **Why was it ignored?** |
+| --- | --- |
+| Catching too general an Exception | This is the final error handling in the function, as there are no other potential errors which could be anticipated at this stage. |
+
+**Checkout App**
+
+models.py 
+
+| **Error Raised** | **Why was it ignored?** |
+| --- | --- |
+| Import "django_countries.fields" could not be resolved | This package has been installed, and the fields display correctly on the Checkout page. It is unclear why pylint is not able to resolve this correctly, as no error exists. |
+
+signals.py 
+
+| **Error Raised** | **Why was it ignored?** |
+| --- | --- |
+| Unused argument 'kwargs', 'sender' & 'created' | These signals are being sent to the OrderLineItem model and functions, where these arguments are being called. Therefore this issue does not apply. |
+
+views.py 
+
+| **Error Raised** | **Why was it ignored?** |
+| --- | --- |
+| Import "stripe" could not be resolved | The Stripe package has been installed correctly, and is working in the app. It is unclear why pylint is not able to resolve this correctly, as no error exists. |
+
+webhook_handler.py 
+
+| **Error Raised** | **Why was it ignored?** |
+| --- | --- |
+| Import "stripe" could not be resolved | The Stripe package has been installed correctly, and is working in the app. It is unclear why pylint is not able to resolve this correctly, as no error exists. |
+| Catching too general an Exception | This is the final error handling in the function, as there are no other potential errors which could be anticipated at this stage. |
+
+webhooks.py 
+
+| **Error Raised** | **Why was it ignored?** |
+| --- | --- |
+| Import "stripe" could not be resolved | The Stripe package has been installed correctly, and is working in the app. It is unclear why pylint is not able to resolve this correctly, as no error exists. |
+| Unused variable 'wh_secret', 'e' | These values are sent to the event_map, which is why they are not called in the code directly |
+| Catching too general an Exception | This is the final error handling in the function, as there are no other potential errors which could be anticipated at this stage. |
+
+**Home App**
+
+views.py
+
+| **Error Raised** | **Why was it ignored?** |
+| --- | --- |
+| Unused variable 'call_to_action' | This variable is sent to the form to be saved, and as such does not apply. |
+
+**Products App**
+
+models.py
+
+| **Error Raised** | **Why was it ignored?** |
+| --- | --- |
+| Unused variable 'field_name' | This variable is sent to the form to be applied, and as such does not apply. |
+| Unused argument 'sender' & 'kwargs' | These variables are called by the app when saving data, and do not need to be called in this function directly |
+
+**Profiles App**
+
+models.py
+
+| **Error Raised** | **Why was it ignored?** |
+| --- | --- |
+| Import "django_countries.fields" could not be resolved | This package has been installed, and the fields display correctly on the Checkout page. It is unclear why pylint is not able to resolve this correctly, as no error exists. |
+
+views.py
+
+| **Error Raised** | **Why was it ignored?** |
+| --- | --- |
+| Redefining name 'profile' from outer scope (line 13) | This is because the name of the view (profile) is the same as the variable. This does not affect the code, and keeping this variable name allows for clarity in the code as to what information is being loaded. |
 
 - - -
 

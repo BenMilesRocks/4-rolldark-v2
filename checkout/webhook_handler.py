@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.template.loader import render_to_string
 from django.conf import settings
 
-import stripe
+import stripe #pylint: disable=E0401
 
 from products.models import Product
 from profiles.models import UserProfile

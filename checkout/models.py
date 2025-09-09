@@ -5,7 +5,7 @@ from decimal import Decimal
 from django.db import models
 from django.db.models import Sum
 from django.shortcuts import get_object_or_404
-from django_countries.fields import CountryField
+from django_countries.fields import CountryField #pylint: disable=E0401
 
 from products.models import Product
 from profiles.models import UserProfile

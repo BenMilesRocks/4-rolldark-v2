@@ -4,7 +4,7 @@ from django.conf import settings
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 
-import stripe
+import stripe #pylint: disable=E0401
 
 from checkout.webhook_handler import WebHookHandler
 

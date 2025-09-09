@@ -8,7 +8,8 @@ from .models import CallToAction
 class CallToActionForm(forms.ModelForm):
     '''Allows CallToAction to be edited in the Home app, rather than in Admin'''
 
-    class Meta: #pylint: disable=C0115
+    class Meta:
+        '''Call to action meta'''
         model = CallToAction
         fields = '__all__'
 

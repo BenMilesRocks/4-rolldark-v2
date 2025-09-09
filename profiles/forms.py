@@ -6,7 +6,8 @@ from .models import UserProfile
 
 class UserProfileForm(forms.ModelForm):
     """Default form for User Profiles"""
-    class Meta: # pylint: disable=C0115
+    class Meta:
+        '''UserProfileForm Meta'''
         model = UserProfile
         exclude = ('user',)
 

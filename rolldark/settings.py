@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 
-import dj_database_url
+import dj_database_url #pylint: disable = E0401
 
 if os.path.isfile('env.py'):
     import env #pylint: disable = W0611

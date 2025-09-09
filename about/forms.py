@@ -8,7 +8,8 @@ from .models import GameMaster
 class GameMasterForm(forms.ModelForm):
     '''Allows GameMaster to be edited in the About app, rather than in Admin'''
 
-    class Meta: #pylint: disable=C0115
+    class Meta:
+        '''GameMaster class meta'''
         model = GameMaster
         fields = '__all__'
 
