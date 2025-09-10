@@ -128,6 +128,21 @@ Most of the known bugs I have seen relate to the Add Product page. Although this
 
 ### Code Used
 
+I used code from [This Learn Django Article](https://learndjango.com/tutorials/django-email-contact-form-tutorial) to create the Contact form.
+
+The Call to Action carousel on the Home page took its structure from an article on [Free Frontend.dev](https://freefrontend.dev/code/bootstrap/call-to-action/call-to-action-carousel/), before I added the dynamic elements from the database.
+
+[This Stack Overflow Post](https://stackoverflow.com/questions/14853779/dynamically-creating-a-specific-number-of-input-form-elements) provided the code for dynamically creating Input Elements for the Add Product page.
+
+For the Toasts, I took code from [CSS Tricks.com](https://css-tricks.com/snippets/css/css-triangle/) to add the triangle at the top of the Toast.
+
+[This Stack Overflow Post](https://stackoverflow.com/questions/75371409/how-to-render-an-arbitrary-set-of-key-value-pairs-from-a-jsonfield-in-a-jinja2) provided code I used to display data from the JSONfield in my database, allowing the user to select from an array of Game Dates on the Product Detail page.
+
+Finally, [This Stack Overflow Post](https://stackoverflow.com/questions/25044370/make-clicked-tab-active-in-bootstrap) explained how to dynamically change the Active class for items on the navbar.
+
+
 ### Media
+
+All images were taken from [The Current Rolldark Website](https://rolldark.co.uk/) and their [Instagram Page](https://www.instagram.com/RolldarkGMA).
 
 ### Acknowledgements
