@@ -68,9 +68,33 @@ The business currently uses a variety of third party solutions to run its websit
 
 ### Color Scheme
 
+Because of the nature of the site, I went with a bold, colourful palette for the project. I wanted customers to be intrigued and excited about the products on offer, and this seemed like the best way to achieve this.
+
+![Rolldark Colour Palette](/static/assets/documentation/colour-palette.png)
+
 ### Typography
 
+Because of the wide range of customers likely to visit the site, as well as the amount of images already vying for the customer's attention; I wanted to keep the fonts simple and easy to read to ensure they were not distracting to the user.
+
+I decided to keep the Bootstrap default font family which uses Helvetica and Arial. Both are sans-serif fonts, making them clear and easy to read.
+
 ### Imagery
+
+Because of the high-fantasy nature of the games on sale, it makes sense for the imagery on the site to use lots of bold, colourful images that elicit a sense of excitement in the customer. In addition to the product images, the main images on display are on the Home page and the About page.
+
+*Home Page*
+
+![Rolldark Background Image](/media/castle_background.webp)
+
+![Call to Action Background](/media/doorway_background.webp)
+
+*About Page*
+
+![Rolldark Game Masters in action](/media/gala2.webp)
+
+![Rolldark Game Masters in action](/media/gala3.webp)
+
+![Rolldark Game Masters in action](/media/gala4.webp)
 
 ### Wireframe
 
