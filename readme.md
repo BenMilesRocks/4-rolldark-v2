@@ -345,11 +345,23 @@ I also tested the site with the Chrome extension [Web Disability Simulator](http
 
 ![Red Green colorblind](/static/assets/documentation/screenshots/colorblind-2.png)
 
+
 ## Technologies Used
 
 ### Languages Used
 
+This site is built using Python, Javascript, HTML and CSS.
+
 ### Frameworks, Libraries & Programs Used
+
+This website is built using Python's [Django](https://www.djangoproject.com/) framework. 
+
+[Django Allauth](https://docs.allauth.org/en/latest/introduction/index.html) was used for security and login details. [Django Storages](https://django-storages.readthedocs.io/en/latest/) was used for accessing Amazon Web Services data.
+[Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) was used for forms, keeping the layout consistent with the latest version of Bootstrap. 
+
+[Stripe Payments](https://www.stripe.com) was used for payment handling, and [Django Countries](https://pypi.org/project/django-countries/#:~:text=A%20Django%20application%20that%20provides,a%20country%20field%20for%20models.) was used to ensure Country codes matched the accepted values for Stripe.
+
+The database The site data is stored on a [PostgreSQL](https://www.postgresql.org/) database, using [dj-database-url](https://pypi.org/project/dj-database-url/) to access the database.
 
 
 ## Deployment and Local Development
