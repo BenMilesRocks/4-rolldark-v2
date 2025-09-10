@@ -1,6 +1,6 @@
 # Rolldark -  Testing
 
-![The Rolldark site shown on a variety of screen sizes](static/assets/documentation/screenshots/responsive-image.jpg)
+![The Rolldark site shown on a variety of screen sizes](/static/assets/documentation/screenshots/responsive-image.jpg)
 
 Visit the deployed site: [Rolldark](https://rolldark-b52dc36be8e7.herokuapp.com/)
 
@@ -30,21 +30,21 @@ I have gone through each page using Google Chrome developer tools & Microsoft Ed
 
 I used [W3C's HTML validator](https://validator.w3.org/) to check my code. This raised a couple issues, most of which were raised erroneously due to the way the data is pulled from django.
 
-![WC3's HTML Validator](static/assets/documentation/testing/validation/w3c-full.png)
+![WC3's HTML Validator](/static/assets/documentation/testing/validation/w3c-full.png)
 
-![WC3's HTML Validator](static/assets/documentation/testing/validation/w3c-1.png)
+![WC3's HTML Validator](/static/assets/documentation/testing/validation/w3c-1.png)
 
 This attribute was added to the Main Logo for the benefit of screen readers, as labelling the 'div' parent element could potentially cause more confusion and layout issues.
 
-![WC3's HTML Validator](static/assets/documentation/testing/validation/w3c-2.png)
+![WC3's HTML Validator](/static/assets/documentation/testing/validation/w3c-2.png)
 
 For some reason, W3C's validator seems to see an empty 'H2' element in the page footer. This is not in my code, and it is unclear where it is seeing this element from. As it is not causing any issues with the site I decided not to alter anything about my code.
 
-![WC3's HTML Validator](static/assets/documentation/testing/validation/w3c-3.png)
+![WC3's HTML Validator](/static/assets/documentation/testing/validation/w3c-3.png)
 
 This javascript was written inline to ensure the Toasts worked properly on all pages. Removing this 'type' attribute caused the script to fail, so I decided to leave this attribute in my code.
 
-![WC3's HTML Validator](static/assets/documentation/testing/validation/w3c-4.png)
+![WC3's HTML Validator](/static/assets/documentation/testing/validation/w3c-4.png)
 
 These errors seem to be raised due to how the code is loaded in Django - the base element leaves the 'page-container' div element open to include the HTML from the relevant page and then closes it after this content has been loaded. It would seem that the validator does not read the code in this order, and as such is raising the error incorrectly. Inspecting the HTML with Google Chrome's developer tools shows these tags have been closed properly, so no action is necessary.
 
@@ -52,7 +52,7 @@ These errors seem to be raised due to how the code is loaded in Django - the bas
 
 I used [W3C's Jigsaw Validator](https://jigsaw.w3.org/css-validator/) to test my site's CSS, which showed no issues.
 
-![WC3's Jigsaw Validator](static/assets/documentation/testing/validation/jigsaw-validation.png)
+![WC3's Jigsaw Validator](/static/assets/documentation/testing/validation/jigsaw-validation.png)
 
 - - -
 
@@ -154,7 +154,7 @@ I used Lighthouse within the Chrome Developer Tools to test the performance, acc
 
 The main issue flagged was the use of 3rd party cookies, which are part of the Stripe API and not something I am capable of altering.
 
-![Lighthouse scores - Best Practices](static/assets/documentation/testing/lighthouse/index-lh-bp.png)
+![Lighthouse scores - Best Practices](/static/assets/documentation/testing/lighthouse/index-lh-bp.png)
 
 - - -
 
