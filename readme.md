@@ -98,6 +98,30 @@ Because of the high-fantasy nature of the games on sale, it makes sense for the 
 
 ### Wireframe
 
+Wireframes were created using Affinity Designer
+
+
+**Home Page**
+
+![Homepage](/static/assets/documentation/wireframes/home-wireframe.jpg)
+
+**About Page**
+
+![About page](/static/assets/documentation/wireframes/about-wireframe.jpg)
+
+**Games / Dice Page**
+
+![Games / Dice page](/static/assets/documentation/wireframes/games-wireframe.jpg)
+
+**Product Detail Page**
+
+![Product Detail page](/static/assets/documentation/wireframes/product-detail-wireframe.jpg)
+
+**Cart Page**
+
+![Cart page](/static/assets/documentation/wireframes/cart-wireframe.jpg)
+
+
 ### Database
 
 
