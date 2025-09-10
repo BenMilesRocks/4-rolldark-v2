@@ -368,7 +368,7 @@ The database The site data is stored on a [PostgreSQL](https://www.postgresql.or
 
 ### Deployment
 
-The site is deployed using Heroku - [The deployed version of the site is available here](https://scrummaester-81eb70fbef06.herokuapp.com/)
+The site is deployed using Heroku - [The deployed version of the site is available here](https://rolldark-b52dc36be8e7.herokuapp.com/)
 
 **Heroku app setup**
 
@@ -424,27 +424,6 @@ The site is deployed using Heroku - [The deployed version of the site is availab
 
 ![Enter credentials](/static/assets/documentation/deployment/heroku-db-10.png)
 
-
-**Restoring the database from backup file**
-
-If you haven't already, download the scrummaester.backup file from the GitHub repo - [BenMilesRocks/3-scrummaester](https://github.com/BenMilesRocks/3-scrummaester).
-
-1. In pgAdmin, navigate to the Heroku database.
-
-2. Open the "Schemas" tab.
-
-3. If a Schema does not currently exist, right click to create a Schema where the data will reside.
-
-4. Right click the Scheme, and select "Restore"
-
-5. Click the folder in the "Filename" section to navigate to the directory where you saved the backup file
-
-![Restore database](static/assets/documentation/deployment/restore-1.png)
-
-6. Click "restore". This should create the tables and populate them with data.
-
-*Please note* The default login for the Super User is Username: user1 , Password: password. This should be changed as soon as possible to prevent security issues.
-
 ### Local Development
 
 **How to fork**
@@ -452,7 +431,7 @@ If you haven't already, download the scrummaester.backup file from the GitHub re
 To fork the repository:
 
 1. Log in (or sign up) to Github.
-2. Go to the repository for this project, [BenMilesRocks/3-scrummaester](https://github.com/BenMilesRocks/3-scrummaester).
+2. Go to the repository for this project, [BenMilesRocks/3-scrummaester](https://github.com/BenMilesRocks/4-rolldark-v2).
 3. Click the Fork button in the top right corner.
 
 **How to clone**
@@ -460,7 +439,7 @@ To fork the repository:
 To clone the repository:
 
 1. Log in (or sign up) to GitHub.
-2. Go to the repository for this project, [BenMilesRocks/3-scrummaester](https://github.com/BenMilesRocks/3-scrummaester).
+2. Go to the repository for this project, [BenMilesRocks/3-scrummaester](https://github.com/BenMilesRocks/4-rolldark-v2).
 3. Click on the code button, select whether you would like to clone with HTTPS, SSH or GitHub CLI and copy the link shown.
 4. Open the terminal in your code editor and change the current working directory to the location you want to use for the cloned directory.
 5. Type 'git clone' into the terminal and then paste the link you copied in step 3. Press enter.
