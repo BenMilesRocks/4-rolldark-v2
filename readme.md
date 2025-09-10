@@ -316,6 +316,15 @@ Because this Site involves webhooks and links to outside sources, I added additi
 
 This provides suitable handling for multiple types of server errors.
 
+**Future Implementations**
+
+Although there is some product filtering available with the Games and Dice tabs, it would be beneficial to allow customers to add more filters to displayed products. Things like which Day of the Week public games are played, if they are online or in person, etc. This was originally planned, but cut due to time constraints.
+
+Currently the 'Edit Product' page only allows users to edit Game Dates by creating a JSON object, so in future versions I would like to implement a way to dynamically create game dates the way the Add Product page does.
+
+I would also like to add a Stock Management facility to the page, listing products as OUT OF STOCK if they are no longer available to prevent the customers buying products that are not available. Similarly an Order Fulfillment app for admin users would be a worthwhile feature, allowing Admin users to monitor which orders have been placed and fulfilled.
+
+Finally it would also be advantageous to create a seperate class of user for Game Masters, allowing them access to information about customers who have purchased tickets to their games without giving them access to the admin tools on the rest of the site.
 
 ### Accessibility
 
