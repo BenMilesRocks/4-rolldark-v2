@@ -131,6 +131,161 @@ My database provides relations between Categories, Products and Orders to popula
 
 ## Features
 
+**Homepage**
+
+The site has a colorful landing page, with a strong call to action at the top inviting customers to contact the company for a quote. The 'Get a Quote Today' button redirects to the Contact Us page
+
+![Homepage](/static/assets/documentation/screenshots/home-top.png)
+
+The home page also has a Call To Action Carousel, a rotating pane of images advertising the latest products on offer. These are dynamically created from the database, allowing Admin users to alter what products are advertised without the need for a Webmaster.
+
+![Call to Action Carousel](/static/assets/documentation/screenshots/home-bottom.png)
+
+**Games / Dice**
+
+The Games page filters products to only display Games to the customer. This was the most intuitive way to display this information to the customer, as the site only offers two main categories of product - Games and Dice.
+
+![Games](/static/assets/documentation/screenshots/games.png)
+
+The Dice page filters products to only display Dice.
+
+![Dice](/static/assets/documentation/screenshots/dice.png)
+
+Products are displayed on cards to give a preview for the products on sale. If the user is logged in as a Superuser, additional buttons show up at the bottom of the card allowing the superuser to Edit or Delete products.
+
+![Product card](/static/assets/documentation/screenshots/game-card.png)
+
+As an additional security measure, a Modal pops up if the superuser selects Delete Product to ensure that they want to remove this product from the database:
+
+![Delete Modal](/static/assets/documentation/screenshots/delete-product-modal.png)
+
+**Product Detail**
+
+The product detail page displays information about the product the customer has selected, and allows options to add products to the cart.
+
+![Product Detail](/static/assets/documentation/screenshots/product-detail.png)
+
+If the product has a "Game Dates" property, a dropdown box allows the user to select which date they would like to purchase a ticket for:
+
+![Game Dates Dropdown](/static/assets/documentation/screenshots/game-dates.png)
+
+When the user updates the quantity purchased, the price automatically updates to show the user the subtotal:
+
+![Dynamic Pricing display](/static/assets/documentation/screenshots/dynamic-pricing.png)
+
+If the product has a delivery charge attached, the price will display a subtotal along with the delivery cost to make it as clear as possible how much the customer will be charged:
+
+![Dynamic Pricing display for Delivery](/static/assets/documentation/screenshots/delivery-pricing.png)
+
+**About Us**
+
+The About Us page contains some information about Rolldark Game Master Agency, as well as a scrolling carousel of images to show off the types of experiences available from the company.
+
+![About Us](/static/assets/documentation/screenshots/about-us.png)
+
+Further down the page is information about the Game Masters currently working for Rolldark. Aside from the large image of Robert Bradley (Founder and owner of Rolldark) all the Game Master profiles are dynamically created from the database, allowing any admin user to update these details without the need for a Webmaster.
+
+![Game Masters](/static/assets/documentation/screenshots/game-masters.png)
+
+The 'More Info' button on each card brings up a modal with an enlarged image and bio of the selected Game Master.
+
+![Game Master Modal](/static/assets/documentation/screenshots/gm-modal.png)
+
+If the user is logged in as a superuser additional buttons show at the bottom of the card allowing them to Edit or Delete the Game Master details:
+
+![Game Master Card](/static/assets/documentation/screenshots/gm-card.png)
+
+As with products, if you click Delete a modal pops up to check you want to delete this Game Master:
+
+![Delete Game Master](/static/assets/documentation/screenshots/delete-gm-modal.png)
+
+**Contact Us**
+
+The Contact Us page is a simple form inviting the customer to send Rolldark a message.
+
+![Contact Us](/static/assets/documentation/screenshots/contact-us.png)
+
+Once the form is submitted successfully it redirects the user to display a message, and invites them to browse Rolldark's games whilst waiting for a response.
+
+![Message Sent](/static/assets/documentation/screenshots/message-sent.png)
+
+**Your Account**
+
+If the user is logged in the 'Your Account' menu shows, allowing them to alter their profile or log out
+
+![Your Account](/static/assets/documentation/screenshots/nav-account.png)
+
+**My Profile**
+
+The profile page has a simple form to allow users to update their delivery info for quicker check out. It also has a history of all orders placed, allowing them to see previous order information.
+
+![My Profile](/static/assets/documentation/screenshots/my-profile.png)
+
+**Log Out**
+
+The site keeps users logged in by default to make checkout quicker and easier, but should the user need to log out they can do so in the 'Your Account' tab by selecting Log Out
+
+![Log Out](/static/assets/documentation/screenshots/log-out.png)
+
+**Site Management**
+
+If the user is logged in as a Superuser the 'Site Management' menu shows, allowing them to alter details on the website.
+
+![Your Account](/static/assets/documentation/screenshots/nav-management.png)
+
+**Inactive Products**
+
+This page displays inactive products that are saved in the database. This allows Admin users to temporarily disable products (if they are out of stock, for example), or create products in advance of them going on sale.
+
+![Inactive Products](/static/assets/documentation/screenshots/inactive-products.png)
+
+These products can be edited and deleted in exactly the same way as live products elsewhere on the site.
+
+**Add new product**
+
+This allows Superusers to add products to the store with a simple form.
+
+![Add new product](/static/assets/documentation/screenshots/add-product-1.png)
+
+I have included tool tips for the process to make it as simple to navigate as possible. I have also included a system for dynamically creating Game Dates for the JSON field on the database. All the user has to do is select how many game dates they wish the product to have and they can add ticket options to the product without having to edit a complicated JSON object:
+
+![Game Dates Module](/static/assets/documentation/screenshots/game-dates-module.png)
+
+**Edit Product**
+
+The Edit Product page allows Superusers to alter existing product details. The form dynamically populates with the data from the database, using the same form as the one to create a new product:
+
+![Edit product](/static/assets/documentation/screenshots/edit-product.png)
+
+**Add Call to Action**
+
+This allows Superusers to add advertisements to the Call to Action carousel on the homepage, simplifying site management.
+
+![Add Call to Action](/static/assets/documentation/screenshots/add-cta.png)
+
+Note that the form has a toggle for Dark Text, ensuring that text elements and buttons remain visible on Carousel Images with a light background!
+
+**View All Actions**
+
+The View All Actions page allows the user to view all currently active Call To Action items. These can be edited or deleted in the same way as products are elsewhere on the site
+
+![View All Actiona](/static/assets/documentation/screenshots/view-all-cta.png)
+
+**Add Game Master**
+
+The Add Game Master page allows the user to add a new game master to the About Us page
+
+![Add Game Master](/static/assets/documentation/screenshots/add-gm.png)
+
+**Cart**
+
+The Cart page shows an order summary, allowing the user to review their purchases before proceeding to the checkout
+
+![Cart](/static/assets/documentation/screenshots/cart.png)
+
+Users can update or remove items from their cart here. Much like the rest of the site, if the user tries to delete an item a Modal pops up confirming this:
+
+![Delete item from cart](/static/assets/documentation/screenshots/delete-cart.png)
 
 ## Accessibility
 
