@@ -68,3 +68,29 @@ The business currently uses a variety of third party solutions to run its websit
 ## Design
 
 ### Database
+
+## Testing
+
+Please refer to [testing.md](static/assets/documentation/testing/testing.md) for all testing carried out.
+
+### Solved Bugs
+
+| **No.** | **Bug** | **How I Solved The Issue** |
+|:-------:|:-------:|:--------------------------:|
+| 1 | Navbar does not correctly highlight currently open page | Used a conditional statement to check if the URL matches the open page, and applying the Bootstrap 'active' class if it does |
+| 2 | TextField data from database does not display text formatting, making product descriptions difficult to read | Used the Django 'linebreaks' filter which preserves paragraphs, making the data easier to read |
+| 3 | Game Master cards on the About page do not conform to the same height, making the layout messy | Added responsive height properties in CSS to ensure all the images conform to the same style |
+| 3 | Add Product requires the user to understand JSON formatting, which would make it difficult for users to add Games to the database | I implemented code to dynamically create Date field inputs, and then a JavaScript function to input this data into the Game Dates field on behalf of the user |
+| 4 | After checkout, Delivery Costs are sometimes incorrectly applied to products | Modified the update_total function to set delivery charge to 0 for each line item, ensuring delivery cost is calculated correctly |
+| 5 | Product Detail page does not correctly calculate price for Dice products | Split the JavaScript function to display the total price into two functions - one for dice, one for games - to allow seperate handling for different products |
+
+### Known Bugs
+
+Most of the known bugs I have seen relate to the Add Product page. Although this would need addressing in a future version of the site, it seemed less important than the customer-facing issues on the site. The issue with Order Emails not sending occurred only during testing a couple days prior to the project being submitted.
+
+| **No.** | **Bug** |
+|:-------:|:-------:|
+| 1 | Edit Product does not dynamically create date fields in the same way Add Product does |
+| 2 | If adding a Game in Add Product and the form is invalid, it will remove the dynamically created Game Dates |
+| 3 | Dynamically created Date fields do not match the styling of the rest of the page |
+| 4 | Order Confirmation Emails are not sending on the deployed version of the site |
