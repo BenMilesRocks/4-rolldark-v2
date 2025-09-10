@@ -484,6 +484,7 @@ Please refer to [testing.md](static/assets/documentation/testing/testing.md) for
 | 3 | Add Product requires the user to understand JSON formatting, which would make it difficult for users to add Games to the database | I implemented code to dynamically create Date field inputs, and then a JavaScript function to input this data into the Game Dates field on behalf of the user |
 | 4 | After checkout, Delivery Costs are sometimes incorrectly applied to products | Modified the update_total function to set delivery charge to 0 for each line item, ensuring delivery cost is calculated correctly |
 | 5 | Product Detail page does not correctly calculate price for Dice products | Split the JavaScript function to display the total price into two functions - one for dice, one for games - to allow seperate handling for different products |
+| 6 | Contact Form does not redirect the user to the 'Message Success' page after sending | Changed the form_valid() function to return a 'render' object instead, correctly redirecting to the 'Message Success' page |
 
 ### Known Bugs
 
@@ -518,4 +519,13 @@ Finally, [This Stack Overflow Post](https://stackoverflow.com/questions/25044370
 
 All images were taken from [The Current Rolldark Website](https://rolldark.co.uk/) and their [Instagram Page](https://www.instagram.com/RolldarkGMA).
 
+
 ### Acknowledgements
+
+I would like to acknowledge the following people
+
+- Jubril Akolade - my Code Institute mentor
+
+- Elle S. for assistance with debugging the Contact form, and for proof reading my Readme file
+
+- The Code Institute Slack channel Peer Code Review - thank you to everyone who tested the site and offered feedback
