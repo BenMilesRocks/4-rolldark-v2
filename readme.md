@@ -124,6 +124,10 @@ Wireframes were created using Affinity Designer
 
 ### Database
 
+My database provides relations between Categories, Products and Orders to populate the final order details. I also included two non-relational models to allow the dynamic creation of site content for the Call to Action and Game Master portions of the website. This will greatly simplify site management in the future, allowing non technical users to make decisions about the site's layout without the need for a webmaster.
+
+![Data Map](/static/assets/documentation/wireframes/database-map.jpg)
+
 
 ## Features
 
