@@ -94,7 +94,7 @@ Because of the high-fantasy nature of the games on sale, it makes sense for the 
 
 ![Rolldark Game Masters in action](/media/gala3.webp)
 
-![Rolldark Game Masters in action](/media/gala4.webp)
+![Rolldark Game Masters in action](/media/gala4.jpg)
 
 ### Wireframe
 
@@ -287,8 +287,54 @@ Users can update or remove items from their cart here. Much like the rest of the
 
 ![Delete item from cart](/static/assets/documentation/screenshots/delete-cart.png)
 
-## Accessibility
+**Checkout**
 
+The checkout page once again provides a summary of items being purchased and a price total, ensuring the customer has every chance to review their details before paying.
+
+![Checkout](/static/assets/documentation/screenshots/checkout.png)
+
+**Order Summary**
+
+Once payments have been proccessed successfully, the customer is redirected to an order summary:
+
+![Order Summary](/static/assets/documentation/screenshots/summary.png)
+
+**404 Page**
+
+The site has a 404 page that displays when the user attempts to navigate to a page that does not exist
+
+![404](/static/assets/documentation/screenshots/404.png)
+
+**Other Error Pages**
+
+Because this Site involves webhooks and links to outside sources, I added additional error handling for these error codes:
+
+* 401
+* 500
+* 503
+* 504
+
+This provides suitable handling for multiple types of server errors.
+
+
+### Accessibility
+
+I have worked hard to ensure the website is as easy to navigate and as accessible to disabled people as possible. To achieve this I:
+
+- Used semantic HTML elements
+- Added Aria tags to all links, buttons and content to ensure Screen Readers are able to comprehend it
+- Used a San-Serif font for site navigation, to make it as easy to read as possible
+- Ensured contrasting colors were used throughout the site to keep elements easily idenitfiable and readable.
+
+I also tested the site with the Chrome extension [Web Disability Simulator](https://chromewebstore.google.com/detail/web-disability-simulator/olioanlbgbpmdlgjnnampnnlohigkjla) to ensure the user experience was friendly to those with color blindness, parkinsons and dyslexia.
+
+**Yellow-Blue Colorblindness**
+
+![Yellow Blue colorblind](/static/assets/documentation/screenshots/colorblind-1.png)
+
+**Red-Green Colorblindness**
+
+![Red Green colorblind](/static/assets/documentation/screenshots/colorblind-2.png)
 
 ## Technologies Used
 

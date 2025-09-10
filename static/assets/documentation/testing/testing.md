@@ -232,6 +232,8 @@ Additional testing was taken by friends and family on a variety of devices and s
 
 All testing below was performed on both my local development environment and the deployed version of the site, to ensure thoroughness of testing.
 
+Payment testing was done using Stripe's default testing card number '4242 4242 4242 4242' to verify that all payments and webhooks were being transmitted successfully.
+
 | **Feature** | **Expected Outcome** | **Testing Performed** | **Result** | **Pass/Fail** |
 | --- | --- | --- | --- | --- |
 | **Navbar** | --- | --- | --- | --- |
