@@ -20,7 +20,6 @@ The business currently uses a variety of third party solutions to run its websit
     - [Database](#database)
 * [Features](#features)
 * [Accessibility](#accessibility)
-* [Credits](#credits)
 * [Technologies Used](#technologies-used)
     - [Languages Used](#languages-used)
     - [Frameworks, Libraries & Programs Used](#frameworks-libraries--programs-used)
@@ -67,7 +66,36 @@ The business currently uses a variety of third party solutions to run its websit
 
 ## Design
 
+### Color Scheme
+
+### Typography
+
+### Imagery
+
+### Wireframe
+
 ### Database
+
+
+## Features
+
+
+## Accessibility
+
+
+## Technologies Used
+
+### Languages Used
+
+### Frameworks, Libraries & Programs Used
+
+
+## Deployment and Local Development
+
+### Deployment
+
+### Local Deployment
+
 
 ## Testing
 
@@ -94,3 +122,12 @@ Most of the known bugs I have seen relate to the Add Product page. Although this
 | 2 | If adding a Game in Add Product and the form is invalid, it will remove the dynamically created Game Dates |
 | 3 | Dynamically created Date fields do not match the styling of the rest of the page |
 | 4 | Order Confirmation Emails are not sending on the deployed version of the site |
+
+
+## Credits
+
+### Code Used
+
+### Media
+
+### Acknowledgements
